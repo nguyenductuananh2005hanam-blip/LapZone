@@ -1,0 +1,20 @@
+﻿@model IEnumerable<Lapzone_test.Models.Category>
+
+@if (Model.Any())
+{
+    <nav class="category-bar" aria-label="Danh mục sản phẩm">
+        <div class="container">
+            <ul class="category-bar-list">
+                @foreach (var c in Model)
+                {
+                    <li>
+                        <a class="category-bar-link"
+                           asp-controller="Product" asp-action="Index" asp-route-categoryId="@c.Id">
+                            @c.Name
+                        </a>
+                    </li>
+                }
+            </ul>
+        </div>
+    </nav>
+}

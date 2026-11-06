@@ -1,0 +1,137 @@
+﻿@model Lapzone_test.Models.User
+
+@{
+    ViewData["Title"] = "Đăng ký tài khoản";
+}
+
+@if (ViewBag.Error != null)
+{
+    <script>
+        alert(@Json.Serialize(ViewBag.Error));
+    </script>
+}
+else if (ViewBag.Success != null)
+{
+    <script>
+        alert(@Json.Serialize(ViewBag.Success));
+    </script>
+}
+
+<style>
+    .auth-wrapper {
+        min-height: 70vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1.5rem 0;
+    }
+
+    .auth-card {
+        width: 100%;
+        max-width: 520px;
+        border: none;
+        border-radius: 16px;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, .12);
+    }
+
+        .auth-card .card-body {
+            padding: 2rem 2.25rem;
+        }
+
+    .auth-title {
+        font-weight: 700;
+        text-align: center;
+        margin-bottom: .25rem;
+    }
+
+    .auth-subtitle {
+        text-align: center;
+        color: #6c757d;
+        margin-bottom: 1.5rem;
+    }
+
+    .auth-card .form-control {
+        padding: .65rem .9rem;
+        border-radius: 10px;
+    }
+
+    .auth-card .btn-submit {
+        padding: .65rem;
+        border-radius: 10px;
+        font-weight: 600;
+    }
+</style>
+
+<div class="auth-wrapper">
+    <div class="card auth-card">
+        <div class="card-body">
+
+            <h3 class="auth-title">Tạo tài khoản</h3>
+            <p class="auth-subtitle">Đăng ký để mua sắm tại Lapzone</p>
+
+            @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true, "", new { @class = "text-danger mb-3" })
+
+                <div class="mb-3">
+                    @Html.LabelFor(m => m.FullName, "Họ và tên", new { @class = "form-label fw-semibold" })
+                    @Html.TextBoxFor(m => m.FullName, new { @class = "form-control", placeholder = "Nguyễn Văn A" })
+                    @Html.ValidationMessageFor(m => m.FullName, "", new { @class = "text-danger small" })
+                </div>
+
+                <div class="mb-3">
+                    @Html.LabelFor(m => m.Email, "Email", new { @class = "form-label fw-semibold" })
+                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control", type = "email", placeholder = "name@example.com" })
+                    @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger small" })
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        @Html.LabelFor(m => m.Phone, "Số điện thoại", new { @class = "form-label fw-semibold" })
+                        @Html.TextBoxFor(m => m.Phone, new { @class = "form-control", type = "tel", placeholder = "09xx xxx xxx" })
+                        @Html.ValidationMessageFor(m => m.Phone, "", new { @class = "text-danger small" })
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        @Html.LabelFor(m => m.Address, "Địa chỉ", new { @class = "form-label fw-semibold" })
+                        @Html.TextBoxFor(m => m.Address, new { @class = "form-control", placeholder = "Số nhà, quận, thành phố" })
+                        @Html.ValidationMessageFor(m => m.Address, "", new { @class = "text-danger small" })
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    @Html.LabelFor(m => m.Password, "Mật khẩu", new { @class = "form-label fw-semibold" })
+                    @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Nhập mật khẩu" })
+                    @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger small" })
+                </div>
+
+                <div class="mb-3">
+                    <label for="confirmPassword" class="form-label fw-semibold">Xác nhận mật khẩu</label>
+                    <input type="password" id="confirmPassword" name="confirmPassword"
+                           class="form-control" placeholder="Nhập lại mật khẩu" />
+                </div>
+
+                <div class="form-check mb-4">
+                    @Html.CheckBox("AgreeToTerms", false, new { @class = "form-check-input", id = "AgreeToTerms" })
+                    <label class="form-check-label" for="AgreeToTerms">
+                        Tôi đồng ý với <a href="#">điều khoản sử dụng</a>
+                    </label>
+                </div>
+
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-primary btn-submit">Đăng ký</button>
+                </div>
+            }
+
+            <p class="text-center text-muted mt-4 mb-0">
+                Đã có tài khoản?
+                <a asp-controller="Account" asp-action="Login">Đăng nhập</a>
+            </p>
+
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

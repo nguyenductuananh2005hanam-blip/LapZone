@@ -1,0 +1,129 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Trang quản trị</title>
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+    <link rel="stylesheet" href="~/css/admin.css" asp-append-version="true" />
+    @await RenderSectionAsync("Styles", required: false)
+</head>
+<body>
+    <div class="admin-wrapper">
+
+        <!-- Sidebar -->
+        <nav id="sidebar" class="admin-sidebar">
+            <div class="sidebar-brand">
+                <i class="bi bi-book-half"></i>
+                <span>Trang quản trị viên</span>
+            </div>
+
+            <ul class="nav flex-column sidebar-menu">
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="Home" asp-action="Index">
+                        <i class="bi bi-speedometer2"></i> Dashboard
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="Categories" asp-action="Index">
+                        <i class="bi bi-journal-bookmark"></i> Quản lý danh mục
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="Users" asp-action="Index">
+                        <i class="bi bi-tags"></i> Quản lý tài khoản
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="Author" asp-action="Index">
+                        <i class="bi bi-person-lines-fill"></i> Tác giả
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="Reader" asp-action="Index">
+                        <i class="bi bi-people"></i> Độc giả
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="Borrow" asp-action="Index">
+                        <i class="bi bi-arrow-left-right"></i> Mượn / Trả
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="Account" asp-action="Index">
+                        <i class="bi bi-shield-lock"></i> Tài khoản
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Nội dung chính -->
+        <div class="admin-main">
+
+            <!-- Topbar -->
+            <header class="admin-topbar">
+                <button id="sidebarToggle" class="btn btn-outline-secondary btn-sm" type="button">
+                    <i class="bi bi-list"></i>
+                </button>
+
+                <div class="ms-auto dropdown">
+                    <a class="d-flex align-items-center text-decoration-none dropdown-toggle text-dark"
+                       href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="bi bi-person-circle fs-4 me-2"></i>
+                        <span>@(User.Identity?.Name ?? "Admin")</span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li><a class="dropdown-item" href="#"><i class="bi bi-person"></i> Hồ sơ</a></li>
+                        <li><hr class="dropdown-divider" /></li>
+                        <li><a class="dropdown-item" href="#"><i class="bi bi-box-arrow-right"></i> Đăng xuất</a></li>
+                    </ul>
+                </div>
+            </header>
+
+            <!-- Body -->
+            <main class="admin-content">
+                @if (TempData["Success"] != null)
+                {
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        @TempData["Success"]
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    </div>
+                }
+                @if (TempData["Error"] != null)
+                {
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        @TempData["Error"]
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    </div>
+                }
+
+                @RenderBody()
+            </main>
+
+            <footer class="admin-footer">
+                &copy; @DateTime.Now.Year - Books_Library
+            </footer>
+        </div>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+            // Thu/phóng sidebar
+            document.getElementById('sidebarToggle').addEventListener('click', function () {
+                document.getElementById('sidebar').classList.toggle('collapsed');
+            });
+
+            // Tô sáng menu đang active
+            document.querySelectorAll('.sidebar-menu .nav-link').forEach(function (a) {
+                if (a.pathname === window.location.pathname ||
+                    (a.pathname !== '/' && window.location.pathname.startsWith(a.pathname))) {
+                    a.classList.add('active');
+                }
+            });
+    </script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

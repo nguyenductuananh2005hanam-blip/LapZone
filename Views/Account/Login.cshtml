@@ -1,0 +1,98 @@
+﻿@model Lapzone_test.Models.User
+
+@{
+    ViewData["Title"] = "Đăng nhập tài khoản";
+}
+
+@if (ViewBag.Error != null)
+{
+    <script>
+        alert(@Json.Serialize(ViewBag.Error));
+    </script>
+}
+
+<style>
+    .login-wrapper {
+        min-height: 70vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .login-card {
+        width: 100%;
+        max-width: 420px;
+        border: none;
+        border-radius: 16px;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, .12);
+    }
+
+        .login-card .card-body {
+            padding: 2rem 2.25rem;
+        }
+
+    .login-title {
+        font-weight: 700;
+        text-align: center;
+        margin-bottom: .25rem;
+    }
+
+    .login-subtitle {
+        text-align: center;
+        color: #6c757d;
+        margin-bottom: 1.5rem;
+    }
+
+    .login-card .form-control {
+        padding: .65rem .9rem;
+        border-radius: 10px;
+    }
+
+    .login-card .btn-login {
+        padding: .65rem;
+        border-radius: 10px;
+        font-weight: 600;
+    }
+</style>
+
+<div class="login-wrapper">
+    <div class="card login-card">
+        <div class="card-body">
+
+            <h3 class="login-title">Đăng nhập</h3>
+            <p class="login-subtitle">Chào mừng bạn quay lại Lapzone</p>
+
+            @using (Html.BeginForm("Login", "Account", FormMethod.Post, new { role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true, "", new { @class = "text-danger mb-3" })
+
+                <div class="mb-3">
+                    @Html.LabelFor(m => m.Email, "Email", new { @class = "form-label fw-semibold" })
+                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "name@example.com", type = "email", autofocus = "autofocus" })
+                    @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger small" })
+                </div>
+
+                <div class="mb-4">
+                    @Html.LabelFor(m => m.Password, "Mật khẩu", new { @class = "form-label fw-semibold" })
+                    @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Nhập mật khẩu" })
+                    @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger small" })
+                </div>
+
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-primary btn-login">Đăng nhập</button>
+                </div>
+            }
+
+            <p class="text-center text-muted mt-4 mb-0">
+                Chưa có tài khoản?
+                <a asp-controller="Account" asp-action="Register">Đăng ký ngay</a>
+            </p>
+
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
