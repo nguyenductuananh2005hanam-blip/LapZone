@@ -232,3 +232,4 @@ D:\Ki_7\asp.net\Lapzone_test\obj\Debug\net10.0\Lapzone_test.genruntimeconfig.cac
 D:\Ki_7\asp.net\Lapzone_test\obj\Debug\net10.0\ref\Lapzone_test.dll
 D:\Ki_7\asp.net\Lapzone_test\bin\Debug\net10.0\System.Security.Cryptography.Pkcs.dll
 D:\Ki_7\asp.net\Lapzone_test\bin\Debug\net10.0\runtimes\win\lib\net10.0\System.Security.Cryptography.Pkcs.dll
+D:\Ki_7\asp.net\Lapzone_test\obj\Debug\net10.0\Lapzone_test.sourcelink.json

@@ -16,7 +16,8 @@ namespace Lapzone_test.Controllers
         }
         public async Task<IActionResult> Index()
         {
-            return View();
+            var products = await _ctx.Products.OrderByDescending(x => x.Id).Take(12).ToListAsync();
+            return View(products);
         }
         public async Task<IActionResult> About()
         {
@@ -38,6 +39,31 @@ namespace Lapzone_test.Controllers
         {
             var categories = await _ctx.Categories.ToListAsync();
             return View(categories);
+        }
+
+
+        public async Task<IActionResult> DsSanPham()
+        {
+            var products = await _ctx.Products.OrderByDescending(x => x.Id).Take(12).ToListAsync();
+            return View(products);
+        }
+
+        public async Task<IActionResult> ProductsByCategories(int categoryId)
+        {
+            var products = await _ctx.Products.Where(p => p.CategoryId == categoryId).ToListAsync();
+            return View(products);
+        }
+
+        public async Task<IActionResult> ProductDetails(int? productId)
+        {
+            var product = await _ctx.Products
+                .Include(p => p.ProductDetail)
+                .FirstOrDefaultAsync(p => p.Id == productId);
+            if (product == null)
+            {
+                return NotFound();
+            }
+            return View(product);
         }
     }
 }

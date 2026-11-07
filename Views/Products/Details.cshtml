@@ -1,0 +1,201 @@
+@model Lapzone_test.Models.Product
+
+@{
+    ViewData["Title"] = Model.Name;
+    var d = Model.ProductDetail;
+    var isAdmin = Context.Session.GetString("UserRole") == "Admin";
+
+    var specs = new List<(string Label, string? Value)>();
+    if (d != null)
+    {
+        specs.Add(("CPU", d.Cpu));
+        specs.Add(("RAM", d.Ram));
+        specs.Add(("Ổ cứng", d.Storage));
+        specs.Add(("Card đồ họa", d.Gpu));
+        specs.Add(("Màn hình", d.Screen));
+        specs.Add(("Pin", d.Battery));
+        specs.Add(("Âm thanh", d.Audio));
+        specs.Add(("Cổng kết nối", d.Ports));
+        specs.Add(("Kết nối không dây", d.Wireless));
+        specs.Add(("Trọng lượng", d.Weight));
+        specs.Add(("Màu sắc", d.Color));
+        specs.Add(("Hệ điều hành", d.Os));
+        specs.Add(("Tình trạng", d.ConditionStatus));
+        specs.Add(("Bảo hành", d.Warranty));
+    }
+}
+
+<style>
+    .pd-card {
+        border: none;
+        border-radius: 20px;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, .10);
+    }
+
+    .pd-img-box {
+        background: #f8f9fa;
+        border-radius: 16px;
+        padding: 1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 340px;
+    }
+
+        .pd-img-box img {
+            max-width: 100%;
+            max-height: 380px;
+            object-fit: contain;
+        }
+
+    .pd-name {
+        font-weight: 800;
+    }
+
+    .pd-price {
+        font-size: 2rem;
+        font-weight: 800;
+        color: #dc3545;
+    }
+
+    .pd-meta .badge {
+        font-size: .85rem;
+        padding: .5rem .8rem;
+    }
+
+    .spec-table th {
+        width: 34%;
+        background: #f8f9fa;
+        font-weight: 600;
+        color: #495057;
+    }
+
+    .spec-title {
+        font-weight: 700;
+        border-left: 5px solid #0d6efd;
+        padding-left: .75rem;
+        margin-bottom: 1rem;
+    }
+</style>
+
+
+<div class="card pd-card mb-4">
+    <div class="card-body p-4">
+        <div class="row g-4">
+
+            <!-- Ảnh -->
+            <div class="col-lg-5">
+                <div class="pd-img-box">
+
+                    @{
+                        var imagePath = Url.Content("~/images/" + Model.Image);
+                        if (!string.IsNullOrEmpty(imagePath))
+                        {
+                            <img src="@Url.Content(imagePath)" alt="@Model.Name" />
+                        }
+                        else
+                        {
+                            <span class="text-muted">Chưa có hình ảnh</span>
+                        }
+                    }
+                </div>
+            </div>
+
+            <!-- Thông tin -->
+            <div class="col-lg-7">
+                <h2 class="pd-name">@Model.Name</h2>
+
+                <div class="pd-meta mb-3">
+                    @if (Model.Category != null)
+                    {
+                        <span class="badge bg-primary-subtle text-primary-emphasis me-1">@Model.Category.Name</span>
+                    }
+                    @if (Model.Stock > 0)
+                    {
+                        <span class="badge bg-success-subtle text-success-emphasis">Còn hàng (@Model.Stock)</span>
+                    }
+                    else
+                    {
+                        <span class="badge bg-danger-subtle text-danger-emphasis">Hết hàng</span>
+                    }
+                </div>
+
+                <div class="pd-price mb-3">@(Model.Price.ToString("N0")) đ</div>
+
+                @if (d != null)
+                {
+                    <ul class="list-unstyled text-muted mb-4">
+                        @if (!string.IsNullOrEmpty(d.Cpu))
+                        {
+                            <li>• CPU: @d.Cpu</li>
+                        }
+                        @if (!string.IsNullOrEmpty(d.Ram))
+                        {
+                            <li>• RAM: @d.Ram</li>
+                        }
+                        @if (!string.IsNullOrEmpty(d.Storage))
+                        {
+                            <li>• Ổ cứng: @d.Storage</li>
+                        }
+                        @if (!string.IsNullOrEmpty(d.Warranty))
+                        {
+                            <li>• Bảo hành: @d.Warranty</li>
+                        }
+                    </ul>
+                }
+
+                <div class="d-flex flex-wrap gap-2">
+                    @if (Model.Stock > 0)
+                    {
+                        <a class="btn btn-primary btn-lg px-4"
+                           asp-controller="Cart" asp-action="Add" asp-route-id="@Model.Id">
+                            Thêm vào giỏ hàng
+                        </a>
+                    }
+                    else
+                    {
+                        <button class="btn btn-secondary btn-lg px-4" disabled>Tạm hết hàng</button>
+                    }
+
+                    @if (isAdmin)
+                    {
+                        <a class="btn btn-outline-secondary btn-lg" asp-action="Edit" asp-route-id="@Model.Id">Sửa</a>
+                    }
+                    <a class="btn btn-outline-dark btn-lg" href="javascript:history.back()">Quay lại</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Thông số kỹ thuật -->
+@if (specs.Any(s => !string.IsNullOrWhiteSpace(s.Value)))
+{
+    <div class="card pd-card mb-4">
+        <div class="card-body p-4">
+            <h4 class="spec-title">Thông số kỹ thuật</h4>
+            <table class="table table-bordered spec-table mb-0">
+                <tbody>
+                    @foreach (var s in specs.Where(s => !string.IsNullOrWhiteSpace(s.Value)))
+                    {
+                        <tr>
+                            <th>@s.Label</th>
+                            <td>@s.Value</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+}
+
+<!-- Thông tin thêm -->
+@if (d != null && !string.IsNullOrWhiteSpace(d.MoreInfo))
+{
+    <div class="card pd-card mb-4">
+        <div class="card-body p-4">
+            <h4 class="spec-title">Thông tin thêm</h4>
+            <p class="mb-0" style="white-space: pre-line;">@d.MoreInfo</p>
+        </div>
+    </div>
+}

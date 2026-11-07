@@ -1,0 +1,93 @@
+@model IEnumerable<Lapzone_test.Models.Product>
+
+@{
+    ViewData["Title"] = "Quản lý sản phẩm";
+}
+@if (ViewBag.ErrorMessage != null)
+{
+    <div class="alert alert-danger">
+        @ViewBag.ErrorMessage
+    </div>
+}
+@if (ViewBag.Success != null)
+{
+    <script>
+        alert(@Json.Serialize(ViewBag.Success));
+    </script>
+}
+<style>
+    .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+</style>
+<div class="header">
+    <h1>Quản lý sản phẩm</h1>
+    <a asp-action="Create" class="btn btn-primary">Thêm sản phẩm</a> 
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Stock)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Image)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Category)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductDetail)
+            </th>
+            <th>Thao tác</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.Stock)
+            </td>
+            <td>
+                    @{
+                        var imagePath = Url.Content("~/images/" + item.Image);
+                        <img src="@imagePath" alt="Product Image" style="max-width: 100px; max-height: 100px;" />
+                    }
+                    
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.Category.Name)
+            </td>
+            <td>
+                    @item.ProductDetail?.Cpu , @item.ProductDetail?.Ram , @item.ProductDetail?.Storage , @item.ProductDetail?.Gpu
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-secondary">Sửa</a> |
+                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info">Xem</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa sản phẩm này?')">Xóa</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

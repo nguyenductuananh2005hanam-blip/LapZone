@@ -16,7 +16,7 @@ public class CategoriesController : Controller
     // GET: CATEGORYS
     public async Task<IActionResult> Index()    
     {
-        return View(await _context.Categories.ToListAsync());
+        return View(await _context.Categories.OrderBy(c => c.Id).ToListAsync());
     }
 
     // GET: CATEGORYS/Details/5
@@ -52,9 +52,18 @@ public class CategoriesController : Controller
     {
         if (ModelState.IsValid)
         {
-            _context.Add(category);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            try
+            {
+                _context.Add(category);
+                await _context.SaveChangesAsync();
+                ViewBag.Success = "Thêm danh mục thành công.";
+                return RedirectToAction(nameof(Index));
+            }
+            catch (Exception)
+            {
+                ViewBag.ErrorMessage = "Có lỗi xảy ra khi thêm danh mục.";
+                return View(category);
+            }
         }
         return View(category);
     }
@@ -113,16 +122,23 @@ public class CategoriesController : Controller
     // GET: CATEGORYS/Delete
     public async Task<IActionResult> Delete(int? id)
     {
-        if (id == null) return NotFound();
-        var danhMuc = await _context.Categories.FindAsync(id);
-        if (danhMuc == null) return NotFound();
-
-        // Thực hiện xóa luôn hoặc hiện form xác nhận (Ở đây làm nhanh xóa luôn)
-        _context.Categories.Remove(danhMuc);
-        await _context.SaveChangesAsync();
-        return RedirectToAction(nameof(Index));
+        try
+        {
+            if (id == null) return NotFound();
+            var danhMuc = await _context.Categories.FindAsync(id);
+            if (danhMuc == null) return NotFound();
+            ViewBag.Success = "Xóa danh mục thành công.";
+            // Thực hiện xóa luôn hoặc hiện form xác nhận (Ở đây làm nhanh xóa luôn)
+            _context.Categories.Remove(danhMuc);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
+        catch (Exception ex)
+        {
+            ViewBag.ErrorMessage = "Có lỗi xảy ra khi xóa danh mục: " + ex.Message;
+            return RedirectToAction(nameof(Index));
+        }
     }
-
     // POST: CATEGORYS/Delete/5
     //[HttpPost, ActionName("Delete")]
     //[ValidateAntiForgeryToken]

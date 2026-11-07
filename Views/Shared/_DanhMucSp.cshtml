@@ -1,20 +1,65 @@
 ﻿@model IEnumerable<Lapzone_test.Models.Category>
 
+    <style>
+        .category-bar {
+            width: 100%;
+            background: #fff;
+            border-top: 1px solid #edf0f5;
+            border-bottom: 1px solid #e9ecef;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, .04);
+        }
+
+        .category-bar-list {
+            display: flex;
+            flex-wrap: nowrap;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            overflow-x: auto;
+            scrollbar-width: none;                 /* ẩn thanh cuộn Firefox */
+        }
+        .category-bar-list::-webkit-scrollbar { display: none; }   /* ẩn thanh cuộn Chrome/Edge */
+
+        .category-bar-list li {
+            flex: 1 1 0;                           /* chia đều toàn bộ chiều ngang */
+            min-width: 110px;                      /* quá hẹp thì cuộn ngang thay vì bóp chữ */
+        }
+
+        .category-bar-link {
+            display: block;
+            text-align: center;
+            white-space: nowrap;
+            padding: .85rem .75rem;
+            color: #495057;
+            font-weight: 500;
+            text-decoration: none;
+            border-bottom: 3px solid transparent;
+            transition: background-color .2s ease, color .2s ease, border-color .2s ease;
+        }
+        .category-bar-link:hover,
+        .category-bar-link.active {
+            background: #f1f5ff;
+            color: #0d6efd;
+            border-bottom-color: #0d6efd;
+        }
+    </style>
 @if (Model.Any())
 {
+    
+     var currentId = Context.Request.Query["categoryId"].ToString();
+    
     <nav class="category-bar" aria-label="Danh mục sản phẩm">
-        <div class="container">
-            <ul class="category-bar-list">
-                @foreach (var c in Model)
-                {
-                    <li>
-                        <a class="category-bar-link"
-                           asp-controller="Product" asp-action="Index" asp-route-categoryId="@c.Id">
-                            @c.Name
-                        </a>
-                    </li>
-                }
-            </ul>
-        </div>
+        <ul class="category-bar-list">
+            @foreach (var c in Model)
+            {
+                <li>
+                    <a class="category-bar-link @(currentId == c.Id.ToString() ? "active" : "")"
+                       asp-controller="Products" asp-action="Index" asp-route-categoryId="@c.Id">
+                        @c.Name
+                    </a>
+                </li>
+            }
+        </ul>
     </nav>
 }

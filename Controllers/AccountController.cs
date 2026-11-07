@@ -103,6 +103,22 @@ namespace Lapzone_test.Controllers
             HttpContext.Session.Clear();
             return RedirectToAction("Login");
         }
-
+        public async Task<IActionResult> Profile(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+            var user = await _context.Users
+                .AsNoTracking()
+                .Include(u => u.Orders)
+                .Include(u => u.CartItems)
+                .FirstOrDefaultAsync(u => u.Id == id);
+            if (user == null)
+            {
+                return NotFound();
+            }
+            return View(user);
+        }
     }
 }

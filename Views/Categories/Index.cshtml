@@ -4,6 +4,20 @@
     ViewData["Title"] = "Quản lý danh mục";
     // Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
+@if (ViewBag.ErrorMessage != null)
+{
+    <script>
+        alert(@Json.Serialize(ViewBag.ErrorMessage));
+    </script>
+}
+
+@if (ViewBag.Success != null)
+{
+    <script>
+        alert(@Json.Serialize(ViewBag.Success));
+    </script>
+}
+
 <style>
     .card-header {
         display: flex;

@@ -78,7 +78,7 @@ else
     <div class="cat-strip">
         @foreach (var c in Model)
         {
-            <a class="cat-item" asp-controller="Product" asp-action="Index" asp-route-categoryId="@c.Id">
+            <a class="cat-item" asp-controller="Home" asp-action="ProductsByCategories" asp-route-categoryId="@c.Id">
                 <div class="cat-icon">💻</div>
                 <div class="cat-name">@c.Name</div>
             </a>

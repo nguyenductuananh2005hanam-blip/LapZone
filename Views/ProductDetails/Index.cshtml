@@ -1,0 +1,131 @@
+@model IEnumerable<Lapzone_test.Models.ProductDetail>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Cpu)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ram)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Storage)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Gpu)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Screen)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Battery)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Audio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ports)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Wireless)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Weight)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Color)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Os)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ConditionStatus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Warranty)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MoreInfo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Product)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(model => item.Cpu)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.Ram)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.Storage)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.Gpu)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.Screen)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.Battery)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.Audio)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.Ports)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.Wireless)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.Weight)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.Color)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.Os)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.ConditionStatus)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.Warranty)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.MoreInfo)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.ProductId)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.Product)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

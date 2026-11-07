@@ -1,73 +1,176 @@
 @model Lapzone_test.Models.User
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Chi tiết người dùng";
+
+    var name = string.IsNullOrWhiteSpace(Model.FullName) ? Model.Email : Model.FullName;
+    var initial = string.IsNullOrEmpty(name) ? "?" : name.Trim()[0].ToString().ToUpper();
+    var isAdminRole = Model.Role?.Trim() == "Admin";
+    string Show(string? v) => string.IsNullOrWhiteSpace(v) ? "Chưa cập nhật" : v;
 }
 
-<h1>Details</h1>
+<style>
+    .ud-card {
+        border: none;
+        border-radius: 20px;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, .10);
+    }
 
-<div>
-    <h4>User</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.FullName)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.FullName)
-        </dd>
-    </dl>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Email)
-        </dd>
-    </dl>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Phone)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Phone)
-        </dd>
-    </dl>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Password)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Password)
-        </dd>
-    </dl>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Address)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Address)
-        </dd>
-    </dl>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Role)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Role)
-        </dd>
-    </dl>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.CartItems)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.CartItems)
-        </dd>
-    </dl>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Orders)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Orders)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    .ud-avatar {
+        width: 110px;
+        height: 110px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 1rem;
+        font-size: 2.8rem;
+        font-weight: 800;
+        color: #fff;
+        background: linear-gradient(135deg, #0d6efd, #6610f2);
+        box-shadow: 0 6px 18px rgba(13, 110, 253, .35);
+    }
+
+    .ud-title {
+        font-weight: 700;
+        border-left: 5px solid #0d6efd;
+        padding-left: .75rem;
+        margin-bottom: 1.25rem;
+    }
+
+    .ud-row {
+        display: flex;
+        gap: 1rem;
+        padding: .85rem 0;
+        border-bottom: 1px solid #f0f2f5;
+    }
+
+        .ud-row:last-child {
+            border-bottom: none;
+        }
+
+    .ud-label {
+        width: 160px;
+        flex-shrink: 0;
+        color: #6c757d;
+        font-weight: 500;
+    }
+
+    .ud-value {
+        font-weight: 500;
+        word-break: break-word;
+    }
+
+    .ud-stat {
+        text-align: center;
+        padding: 1.25rem 1rem;
+        border-radius: 16px;
+        background: #f8f9fa;
+    }
+
+    .ud-stat-num {
+        font-size: 1.9rem;
+        font-weight: 800;
+        color: #0d6efd;
+    }
+
+    @@media (max-width: 575.98px) {
+        .ud-row {
+            flex-direction: column;
+            gap: .15rem;
+        }
+
+        .ud-label {
+            width: auto;
+        }
+    }
+</style>
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a asp-action="Index">Quản lý tài khoản</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Chi tiết</li>
+    </ol>
+</nav>
+
+<div class="row g-4">
+
+    <!-- Thẻ hồ sơ -->
+    <div class="col-lg-4">
+        <div class="card ud-card text-center">
+            <div class="card-body p-4">
+                <div class="ud-avatar">@initial</div>
+                <h4 class="fw-bold mb-1">@name</h4>
+                <p class="text-muted mb-3">@Model.Email</p>
+
+                @if (isAdminRole)
+                {
+                    <span class="badge rounded-pill text-bg-danger px-3 py-2">
+                        <i class="bi bi-shield-check me-1"></i>Quản trị viên
+                    </span>
+                }
+                else
+                {
+                    <span class="badge rounded-pill text-bg-primary px-3 py-2">
+                        <i class="bi bi-person-check me-1"></i>@(string.IsNullOrWhiteSpace(Model.Role) ? "Khách hàng" : Model.Role)
+                    </span>
+                }
+
+                <div class="d-grid gap-2 mt-4">
+                    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">
+                        <i class="bi bi-pencil-square me-1"></i>Chỉnh sửa
+                    </a>
+                    <a asp-action="Index" class="btn btn-outline-secondary">
+                        <i class="bi bi-arrow-left me-1"></i>Quay lại danh sách
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Thông tin chi tiết -->
+    <div class="col-lg-8">
+        <div class="card ud-card mb-4">
+            <div class="card-body p-4">
+                <h5 class="ud-title">Thông tin tài khoản</h5>
+
+                <div class="ud-row">
+                    <div class="ud-label"><i class="bi bi-person me-2"></i>Họ và tên</div>
+                    <div class="ud-value">@Show(Model.FullName)</div>
+                </div>
+                <div class="ud-row">
+                    <div class="ud-label"><i class="bi bi-envelope me-2"></i>Email</div>
+                    <div class="ud-value">@Show(Model.Email)</div>
+                </div>
+                <div class="ud-row">
+                    <div class="ud-label"><i class="bi bi-telephone me-2"></i>Số điện thoại</div>
+                    <div class="ud-value">@Show(Model.Phone)</div>
+                </div>
+                <div class="ud-row">
+                    <div class="ud-label"><i class="bi bi-geo-alt me-2"></i>Địa chỉ</div>
+                    <div class="ud-value">@Show(Model.Address)</div>
+                </div>
+                <div class="ud-row">
+                    <div class="ud-label"><i class="bi bi-shield-lock me-2"></i>Vai trò</div>
+                    <div class="ud-value">@Show(Model.Role)</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Thống kê -->
+        <div class="row g-3">
+            <div class="col-6">
+                <div class="ud-stat">
+                    <div class="ud-stat-num">@(Model.Orders?.Count ?? 0)</div>
+                    <div class="text-muted"><i class="bi bi-bag-check me-1"></i>Đơn hàng</div>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="ud-stat">
+                    <div class="ud-stat-num">@(Model.CartItems?.Count ?? 0)</div>
+                    <div class="text-muted"><i class="bi bi-cart3 me-1"></i>Sản phẩm trong giỏ</div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

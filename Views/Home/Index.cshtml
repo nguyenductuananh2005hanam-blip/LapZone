@@ -2,7 +2,132 @@
     ViewData["Title"] = "Trang chủ Lapzone" ;
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+@section Hero {
+    <section class="py-5 text-white text-center"
+             style="background: linear-gradient(135deg, #0d6efd, #6610f2);">
+        <div class="container py-4">
+            <h1 class="display-5 fw-bold">Laptop chính hãng, giá tốt</h1>
+            <p class="lead mb-4">Chọn chiếc máy phù hợp cho học tập, làm việc và giải trí.</p>
+            <a class="btn btn-light btn-lg px-4" asp-controller="Home" asp-action="DsDanhMuc">Xem danh mục</a>
+        </div>
+    </section>
+}
+
+@model IEnumerable<Lapzone_test.Models.Product>
+
+<style>
+    .product-card {
+        border: none;
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, .08);
+        transition: transform .2s ease, box-shadow .2s ease;
+    }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, .15);
+        }
+
+    .product-thumb {
+        display: block;
+        background: #f8f9fa;
+        aspect-ratio: 1 / 1;
+        padding: 1rem;
+    }
+
+        .product-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+    .product-name {
+        font-size: .98rem;
+        font-weight: 600;
+        line-height: 1.35;
+        min-height: 2.7em; /* luôn chiếm 2 dòng để các thẻ bằng nhau */
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+        .product-name a {
+            color: #212529;
+            text-decoration: none;
+        }
+
+            .product-name a:hover {
+                color: #0d6efd;
+            }
+
+    .product-price {
+        font-size: 1.1rem;
+        font-weight: 800;
+        color: #dc3545;
+    }
+</style>
+
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h3 class="fw-bold mb-0">Danh sách sản phẩm mới</h3>
+    
 </div>
+
+@if (!Model.Any())
+{
+    <div class="alert alert-info">Hiện chưa có sản phẩm nào.</div>
+}
+else
+{
+    <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 row-cols-xxl-6 g-3">
+        @foreach (var item in Model)
+        {
+            var img = string.IsNullOrEmpty(item.Image)
+                ? null
+                : (item.Image.StartsWith("/") || item.Image.StartsWith("~"))
+                    ? item.Image
+                    : "~/images/" + item.Image;
+
+            <div class="col">
+                <div class="card product-card h-100">
+
+                    <a class="product-thumb" asp-controller="Products" asp-action="Details" asp-route-id="@item.Id">
+                        @if (img != null)
+                        {
+                            <img src="@Url.Content(img)" alt="@item.Name" loading="lazy" />
+                        }
+                        else
+                        {
+                            <div class="h-100 d-flex align-items-center justify-content-center text-muted small">
+                                Chưa có ảnh
+                            </div>
+                        }
+                    </a>
+
+                    <div class="card-body d-flex flex-column">
+                        <h6 class="product-name">
+                            <a asp-controller="Products" asp-action="Details" asp-route-id="@item.Id">@item.Name</a>
+                        </h6>
+
+                        <div class="product-price mb-1">@item.Price.ToString("N0", System.Globalization.CultureInfo.InvariantCulture) đ</div>
+
+                        @if (item.Stock > 0)
+                        {
+                            <small class="text-success mb-3">Còn hàng (@item.Stock)</small>
+                        }
+                        else
+                        {
+                            <small class="text-danger mb-3">Hết hàng</small>
+                        }
+
+                        <a asp-controller="Products" asp-action="Details" asp-route-id="@item.Id"
+                           class="btn btn-primary btn-sm mt-auto">Xem chi tiết</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}
+

@@ -1,0 +1,76 @@
+@model Lapzone_test.Models.Product
+
+@{
+    ViewData["Title"] = "Thêm sản phẩm";
+}
+
+<h1>Thêm sản phẩm</h1>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="Name" class="control-label">Tên sản phẩm</label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Price" class="control-label">Giá</label>
+                <input asp-for="Price" class="form-control" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Stock" class="control-label">Số lượng</label>
+                <input asp-for="Stock" class="form-control" />
+                <span asp-validation-for="Stock" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Image" class="control-label">Hình ảnh</label>
+                <input asp-for="Image" class="form-control" type="file" accept="image/*"/>
+                <span asp-validation-for="Image" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="CategoryId" class="control-label">Mã danh mục</label>
+                <input asp-for="CategoryId" class="form-control" />
+                <span asp-validation-for="CategoryId" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="CartItems" class="control-label">Giỏ hàng</label>
+                <input asp-for="CartItems" class="form-control" />
+                <span asp-validation-for="CartItems" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Category" class="control-label">Danh mục</label>
+                <input asp-for="Category" class="form-control" />
+                <span asp-validation-for="Category" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="OrderDetails" class="control-label"></label>
+                <input asp-for="OrderDetails" class="form-control" />
+                <span asp-validation-for="OrderDetails" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="ProductDetail" class="control-label">Cấu hình</label>
+                <input asp-for="ProductDetail" class="form-control" />
+                <span asp-validation-for="ProductDetail" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Thêm sản phẩm" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>

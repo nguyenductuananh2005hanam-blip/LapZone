@@ -28,7 +28,10 @@ public class UsersController : Controller
         }
 
         var user = await _context.Users
-            .FirstOrDefaultAsync(m => m.Id == id);
+       .AsNoTracking()
+       .Include(u => u.Orders)
+       .Include(u => u.CartItems)
+       .FirstOrDefaultAsync(u => u.Id == id);
         if (user == null)
         {
             return NotFound();
