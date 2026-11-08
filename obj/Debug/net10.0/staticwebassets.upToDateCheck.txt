@@ -1,11 +1,5 @@
 wwwroot\css\site.css
 wwwroot\favicon.ico
-wwwroot\images\Dell14pro.jpg
-wwwroot\images\HPLap.jpg
-wwwroot\images\Lapzone_logo.png
-wwwroot\images\Lenovo.jpg
-wwwroot\images\login_img.jpg
-wwwroot\images\MacM4.jpg
 wwwroot\js\site.js
 wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css
 wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.map
@@ -67,6 +61,14 @@ wwwroot\lib\jquery\dist\jquery.slim.js
 wwwroot\lib\jquery\dist\jquery.slim.min.js
 wwwroot\lib\jquery\dist\jquery.slim.min.map
 wwwroot\lib\jquery\LICENSE.txt
+wwwroot\images\login_img.jpg
+wwwroot\images\Lapzone_logo.png
+wwwroot\images\Dell14pro.jpg
+wwwroot\images\HPLap.jpg
+wwwroot\images\Lenovo.jpg
+wwwroot\images\MacM4.jpg
+wwwroot\images\8dc46c2846664848a47902bef25445b8.jpg
+wwwroot\images\bb51b85fb72643698cd70d834aa3cef2.jpg
 D:\Ki_7\asp.net\Lapzone_test\wwwroot\css\site.css
 D:\Ki_7\asp.net\Lapzone_test\wwwroot\favicon.ico
 D:\Ki_7\asp.net\Lapzone_test\wwwroot\js\site.js

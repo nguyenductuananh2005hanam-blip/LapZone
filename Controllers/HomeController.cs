@@ -42,8 +42,18 @@ namespace Lapzone_test.Controllers
         }
 
 
-        public async Task<IActionResult> DsSanPham()
+        public async Task<IActionResult> DsSanPham(string? keyword)
         {
+            if (!string.IsNullOrEmpty(keyword))
+            {
+                var products_search = await _ctx.Products
+                    .Where(p => p.Name.Trim().ToLower().Contains(keyword.Trim().ToLower()))
+                    .AsNoTracking()
+                    .Include(x => x.Category)
+                    .Include(x => x.ProductDetail)
+                    .ToListAsync();
+                return View(products_search);
+            }
             var products = await _ctx.Products.OrderByDescending(x => x.Id).Take(12).ToListAsync();
             return View(products);
         }
@@ -64,6 +74,21 @@ namespace Lapzone_test.Controllers
                 return NotFound();
             }
             return View(product);
+        }
+
+        public async Task<IActionResult> Search(string? keyword)
+        {
+            if (!string.IsNullOrEmpty(keyword))
+            {
+                var products = await _ctx.Products
+                    .Where(p => p.Name.Contains(keyword))
+                    .AsNoTracking()
+                    .Include(x => x.Category)
+                    .Include(x => x.ProductDetail)
+                    .ToListAsync();
+                return View(products);
+            }
+            return View(new List<Product>());
         }
     }
 }

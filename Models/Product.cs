@@ -22,6 +22,7 @@ public partial class Product
 
     [Column("price")]
     [DisplayName("Giá")]
+    [DisplayFormat(DataFormatString = "{0:N0} đ", ApplyFormatInEditMode = false)]
     public double Price { get; set; }
 
     [Column("stock")]

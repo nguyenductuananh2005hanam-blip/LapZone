@@ -4,71 +4,224 @@
     ViewData["Title"] = "Sửa thông tin sản phẩm";
 }
 
-<h1>Sửa thông tin sản phẩm</h1>
+<style>
+    .product-form {
+        max-width: 760px;
+        margin: 0 auto;
+        padding: 24px;
+        background: #fff;
+        border: 1px solid #e5e7eb;
+        border-radius: 12px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
 
-<h4>Product</h4>
+        .product-form .control-label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 600;
+        }
+
+    .product-section {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+        margin-bottom: 20px;
+        padding: 16px;
+        background: #f9fafb;
+        border: 1px solid #e5e7eb;
+        border-radius: 8px;
+    }
+
+    .product-section-title {
+        grid-column: 1 / -1;
+        margin: 0;
+        font-size: 1rem;
+        font-weight: 700;
+    }
+
+    .col-full {
+        grid-column: 1 / -1;
+    }
+
+    .image-preview {
+        display: block;
+        max-width: 180px;
+        margin-top: 10px;
+        border: 1px solid #e5e7eb;
+        border-radius: 8px;
+    }
+
+    .image-label {
+        margin: 10px 0 0;
+        font-size: 0.85rem;
+        color: #6b7280;
+    }
+
+    @@media (max-width: 576px) {
+        .product-section {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+
+<h1>Sửa thông tin sản phẩm</h1>
 <hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit" enctype="multipart/form-data">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Id" />
-            <div class="form-group">
+
+<div class="product-form">
+    <form asp-action="Edit" method="post" enctype="multipart/form-data">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="Id" />
+
+        <div class="product-section">
+            <h2 class="product-section-title">Thông tin chung</h2>
+
+            <div class="form-group col-full">
                 <label asp-for="Name" class="control-label">Tên sản phẩm</label>
                 <input asp-for="Name" class="form-control" />
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
+
             <div class="form-group">
                 <label asp-for="Price" class="control-label">Giá</label>
                 <input asp-for="Price" class="form-control" type="number" step="0.01" />
                 <span asp-validation-for="Price" class="text-danger"></span>
             </div>
+
             <div class="form-group">
                 <label asp-for="Stock" class="control-label">Số lượng kho</label>
                 <input asp-for="Stock" class="form-control" />
                 <span asp-validation-for="Stock" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Image" class="control-label">Hình ảnh</label>
-                <input asp-for="Image" class="form-control" type="file" accept="image/*"/>
-                <span asp-validation-for="Image" class="text-danger"></span>
-            </div>
+
             <div class="form-group">
                 <label asp-for="CategoryId" class="control-label">Danh mục</label>
-                <input asp-for="CategoryId" class="form-control" />
+                <select asp-for="CategoryId" class="form-select" asp-items="ViewBag.Catogies"></select>
                 <span asp-validation-for="CategoryId" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="CartItems" class="control-label"></label>
-                <input asp-for="CartItems" class="form-control" />
-                <span asp-validation-for="CartItems" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Category" class="control-label"></label>
-                <input asp-for="Category" class="form-control" />
-                <span asp-validation-for="Category" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="OrderDetails" class="control-label"></label>
-                <input asp-for="OrderDetails" class="form-control" />
-                <span asp-validation-for="OrderDetails" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ProductDetail" class="control-label"></label>
-                <input asp-for="ProductDetail" class="form-control" />
-                <span asp-validation-for="ProductDetail" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
-</div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
+            <div class="form-group">
+                <label class="control-label">Hình ảnh</label>
+                @* name="HinhAnh" phải khớp tên tham số trong controller *@
+                <input type="file" name="HinhAnh" id="imageInput" class="form-control" accept="image/*" />
+                <span asp-validation-for="Image" class="text-danger"></span>
+
+                @if (!string.IsNullOrEmpty(Model.Image))
+                {
+                    <p class="image-label" id="imageLabel">Ảnh hiện tại:</p>
+                    <img id="imagePreview" class="image-preview" src="~/images/@Model.Image" alt="Ảnh sản phẩm" />
+                }
+                else
+                {
+                    <p class="image-label" id="imageLabel" style="display:none">Ảnh mới:</p>
+                    <img id="imagePreview" class="image-preview" style="display:none" alt="Xem trước ảnh" />
+                }
+            </div>
+        </div>
+
+        <div class="product-section">
+            <h2 class="product-section-title">Cấu hình chi tiết</h2>
+
+            <div class="form-group">
+                <label asp-for="ProductDetail.Cpu" class="control-label">CPU</label>
+                <input asp-for="ProductDetail.Cpu" class="form-control" />
+                <span asp-validation-for="ProductDetail.Cpu" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProductDetail.Ram" class="control-label">RAM</label>
+                <input asp-for="ProductDetail.Ram" class="form-control" />
+                <span asp-validation-for="ProductDetail.Ram" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProductDetail.Storage" class="control-label">Ổ cứng</label>
+                <input asp-for="ProductDetail.Storage" class="form-control" />
+                <span asp-validation-for="ProductDetail.Storage" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProductDetail.Gpu" class="control-label">GPU</label>
+                <input asp-for="ProductDetail.Gpu" class="form-control" />
+                <span asp-validation-for="ProductDetail.Gpu" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProductDetail.Screen" class="control-label">Màn hình</label>
+                <input asp-for="ProductDetail.Screen" class="form-control" />
+                <span asp-validation-for="ProductDetail.Screen" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProductDetail.Battery" class="control-label">Pin</label>
+                <input asp-for="ProductDetail.Battery" class="form-control" />
+                <span asp-validation-for="ProductDetail.Battery" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProductDetail.Audio" class="control-label">Âm thanh</label>
+                <input asp-for="ProductDetail.Audio" class="form-control" />
+                <span asp-validation-for="ProductDetail.Audio" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProductDetail.Ports" class="control-label">Cổng kết nối</label>
+                <input asp-for="ProductDetail.Ports" class="form-control" />
+                <span asp-validation-for="ProductDetail.Ports" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProductDetail.Wireless" class="control-label">Kết nối không dây</label>
+                <input asp-for="ProductDetail.Wireless" class="form-control" />
+                <span asp-validation-for="ProductDetail.Wireless" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProductDetail.Weight" class="control-label">Trọng lượng</label>
+                <input asp-for="ProductDetail.Weight" class="form-control" />
+                <span asp-validation-for="ProductDetail.Weight" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProductDetail.Color" class="control-label">Màu sắc</label>
+                <input asp-for="ProductDetail.Color" class="form-control" />
+                <span asp-validation-for="ProductDetail.Color" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProductDetail.Os" class="control-label">Hệ điều hành</label>
+                <input asp-for="ProductDetail.Os" class="form-control" />
+                <span asp-validation-for="ProductDetail.Os" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProductDetail.ConditionStatus" class="control-label">Tình trạng</label>
+                <input asp-for="ProductDetail.ConditionStatus" class="form-control" />
+                <span asp-validation-for="ProductDetail.ConditionStatus" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProductDetail.Warranty" class="control-label">Bảo hành</label>
+                <input asp-for="ProductDetail.Warranty" class="form-control" />
+                <span asp-validation-for="ProductDetail.Warranty" class="text-danger"></span>
+            </div>
+            <div class="form-group col-full">
+                <label asp-for="ProductDetail.MoreInfo" class="control-label">Thông tin thêm</label>
+                <textarea asp-for="ProductDetail.MoreInfo" class="form-control" rows="3"></textarea>
+                <span asp-validation-for="ProductDetail.MoreInfo" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <input type="submit" value="Lưu" class="btn btn-primary" />
+            <a asp-action="Index" class="btn btn-secondary">Trở lại danh sách</a>
+        </div>
+    </form>
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <script>
+        // Chọn ảnh mới thì thay ảnh xem trước
+        document.getElementById('imageInput').addEventListener('change', function() {
+            const preview = document.getElementById('imagePreview');
+            const label = document.getElementById('imageLabel');
+            const file = this.files[0];
+            if (file) {
+                preview.src = URL.createObjectURL(file);
+                preview.style.display = 'block';
+                label.textContent = 'Ảnh mới:';
+                label.style.display = 'block';
+            }
+        });
+    </script>
 }
