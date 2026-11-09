@@ -82,7 +82,7 @@ else if (ViewBag.Success != null)
 
                 <div class="mb-3">
                     @Html.LabelFor(m => m.Email, "Email", new { @class = "form-label fw-semibold" })
-                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control", type = "email", placeholder = "name@example.com" })
+                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control", type = "email", placeholder = "nguyenvana@gmail.com" })
                     @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger small" })
                 </div>
 
@@ -94,7 +94,7 @@ else if (ViewBag.Success != null)
                     </div>
                     <div class="col-md-6 mb-3">
                         @Html.LabelFor(m => m.Address, "Địa chỉ", new { @class = "form-label fw-semibold" })
-                        @Html.TextBoxFor(m => m.Address, new { @class = "form-control", placeholder = "Số nhà, quận, thành phố" })
+                        @Html.TextBoxFor(m => m.Address, new { @class = "form-control", placeholder = "Số nhà, huyện, thành phố" })
                         @Html.ValidationMessageFor(m => m.Address, "", new { @class = "text-danger small" })
                     </div>
                 </div>

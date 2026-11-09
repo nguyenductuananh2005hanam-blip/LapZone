@@ -19,6 +19,10 @@ public class ProductsController : Controller
     // GET: PRODUCTS
     public async Task<IActionResult> Index()    
     {
+        if (HttpContext.Session.GetString("UserRole") != "Admin")
+        {
+            return RedirectToAction("Login", "Account");
+        } else
         return View(await _context.Products.AsNoTracking().Include(x => x.Category).Include(x => x.ProductDetail).ToListAsync());
     }
 
@@ -133,7 +137,7 @@ public class ProductsController : Controller
         ModelState.Remove("CartItems");
         ModelState.Remove("OrderDetails");
         ModelState.Remove("ProductDetail.Product");
-
+        
 
         // Lấy bản ghi hiện có trong DB
         var existing = await _context.Products

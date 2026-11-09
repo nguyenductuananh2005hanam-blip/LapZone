@@ -2,7 +2,7 @@
     ViewData["Title"] = "Trang chủ Lapzone" ;
 }
 
-@section Hero {
+@* @section Hero {
     <section class="py-5 text-white text-center"
              style="background: linear-gradient(135deg, #0d6efd, #6610f2);">
         <div class="container py-4">
@@ -11,7 +11,7 @@
             <a class="btn btn-light btn-lg px-4" asp-controller="Home" asp-action="DsDanhMuc">Xem danh mục</a>
         </div>
     </section>
-}
+} *@
 
 @model IEnumerable<Lapzone_test.Models.Product>
 
@@ -68,10 +68,76 @@
         color: #dc3545;
     }
 </style>
+<div class="Banner">
+    <a href="#" class="banner active"><img src="~/images/banner3.jpg" alt="Banner 2" class="img-fluid"></a>
+    <a href="#" class="banner"><img src="~/images/banner3.jpg" alt="Banner 3" class="img-fluid"></a>
 
+    <button type="button" class="banner-btn prev" aria-label="Banner trước">&#10094;</button>
+    <button type="button" class="banner-btn next" aria-label="Banner sau">&#10095;</button>
+    <style>
+            .Banner {
+                position: relative;
+                overflow: hidden;
+            }
+
+                .Banner .banner {
+                    display: none;
+                }
+
+                    .Banner .banner.active {
+                        display: block;
+                    }
+
+                .Banner img {
+                    width: 100%;
+                    display: block;
+                    border-radius: 8px;
+                }
+
+            .banner-btn {
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                width: 44px;
+                height: 44px;
+                border: none;
+                border-radius: 50%;
+                background: rgba(0, 0, 0, 0.5);
+                color: #fff;
+                font-size: 20px;
+                cursor: pointer;
+                z-index: 2;
+            }
+
+                .banner-btn:hover {
+                    background: rgba(0, 0, 0, 0.8);
+                }
+
+                .banner-btn.prev {
+                    left: 12px;
+                }
+
+                .banner-btn.next {
+                    right: 12px;
+                }
+    </style>
+    <script>
+            const banners = document.querySelectorAll('.Banner .banner');
+            let current = 0;
+
+            function showBanner(index) {
+                banners[current].classList.remove('active');
+                current = (index + banners.length) % banners.length; // quay vòng
+                banners[current].classList.add('active');
+            }
+
+            document.querySelector('.Banner .prev').addEventListener('click', () => showBanner(current - 1));
+            document.querySelector('.Banner .next').addEventListener('click', () => showBanner(current + 1));
+    </script>
+</div>
 
 <div class="d-flex justify-content-between align-items-center mb-3">
-    <h3 class="fw-bold mb-0">Danh sách sản phẩm mới</h3>
+    <h3 class="fw-bold mb-0" style="margin-top: 10px;">Danh sách sản phẩm mới</h3>
     
 </div>
 
@@ -111,15 +177,15 @@ else
                             <a asp-controller="Products" asp-action="Details" asp-route-id="@item.Id">@item.Name</a>
                         </h6>
 
-                        <div class="product-price mb-1">@item.Price.ToString("N0", System.Globalization.CultureInfo.InvariantCulture) đ</div>
+                        <div class="product-price mb-1" style="text-align : right">@item.Price.ToString("N0", System.Globalization.CultureInfo.InvariantCulture) đ</div>
 
                         @if (item.Stock > 0)
                         {
-                            <small class="text-success mb-3">Còn hàng (@item.Stock)</small>
+                            <small class="text-success mb-3" style="text-align : right">Còn hàng (@item.Stock)</small>
                         }
                         else
                         {
-                            <small class="text-danger mb-3">Hết hàng</small>
+                            <small class="text-danger mb-3" style="text-align : right">Hết hàng</small>
                         }
 
                         <a asp-controller="Products" asp-action="Details" asp-route-id="@item.Id"
