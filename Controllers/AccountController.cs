@@ -120,5 +120,60 @@ namespace Lapzone_test.Controllers
             }
             return View(user);
         }
+        [HttpGet]
+        public async Task<IActionResult> ChangesPassword(int? id)
+        {
+            if (id == null) return NotFound();
+
+            var user = await _context.Users.FindAsync(id);
+            if (user == null) return NotFound();
+
+            return View(user);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ChangesPassword(int? id, string? currentPassword, string? newPassword, string? confirmPassword)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var user = await _context.Users.FindAsync(id);
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            if (currentPassword == null || newPassword == null || confirmPassword == null)
+            {
+                ViewBag.Error = "Vui lòng nhập đầy đủ thông tin.";
+                return View(user);
+            }
+
+            if (MD5Hash(currentPassword) != user.Password)
+            {
+                ViewBag.Error = "Mật khẩu hiện tại không đúng.";
+                return View(user);
+            }
+
+            if (newPassword != confirmPassword)
+            {
+                ViewBag.Error = "Mật khẩu xác nhận không khớp.";
+                return View(user);
+            }
+
+            if(currentPassword == newPassword)
+            {
+                ViewBag.Error = "Mật khẩu mới không được trùng với mật khẩu hiện tại.";
+                return View(user);
+            }
+            user.Password = MD5Hash(newPassword);
+            _context.Users.Update(user);
+            await _context.SaveChangesAsync();
+
+            ViewBag.Success = "Đổi mật khẩu thành công!";
+            return View(user);
+        }
     }
 }

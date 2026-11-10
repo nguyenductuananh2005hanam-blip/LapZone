@@ -1,5 +1,10 @@
 @model Lapzone_test.Models.Product
-
+@if (TempData["Success"] != null)
+{
+    <script>
+          alert(@Json.Serialize(TempData["Success"]));
+    </script>
+}
 @{
     ViewData["Title"] = Model.Name;
     var d = Model.ProductDetail;
@@ -147,10 +152,27 @@
                 <div class="d-flex flex-wrap gap-2">
                     @if (Model.Stock > 0)
                     {
-                        <a class="btn btn-primary btn-lg px-4"
-                           asp-controller="Cart" asp-action="Add" asp-route-id="@Model.Id">
-                            Thêm vào giỏ hàng
-                        </a>
+                        <form asp-controller="CartItems" asp-action="AddToCart" method="post">
+                            <input type="hidden" name="productId" value="@Model.Id" />
+                            <input type="hidden" name="returnUrl" value="@(Context.Request.Path + Context.Request.QueryString)" />
+                            <input type="hidden" name="quantity" id="quantity-input" value="1" />
+
+                            <div class="d-inline-flex align-items-center me-2">
+                                <button type="button" id="btn-minus" class="btn btn-sm btn-outline-secondary">
+                                    <i class="bi bi-dash"></i>
+                                </button>
+
+                                <span class="px-3 fw-semibold" id="quantity-display">1</span>
+
+                                <button type="button" id="btn-plus" class="btn btn-sm btn-outline-secondary">
+                                    <i class="bi bi-plus"></i>
+                                </button>
+                            </div>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="bi bi-cart-plus me-1"></i>Thêm vào giỏ
+                            </button>
+                        </form>
+                        
                     }
                     else
                     {
@@ -161,7 +183,7 @@
                     {
                         <a class="btn btn-outline-secondary btn-lg" asp-action="Edit" asp-route-id="@Model.Id">Sửa</a>
                     }
-                    <a class="btn btn-outline-dark btn-lg" href="javascript:history.back()">Quay lại</a>
+                    <a class="btn btn-secondary" href="javascript:history.back()">Quay lại</a>
                 </div>
             </div>
         </div>
@@ -199,3 +221,27 @@
         </div>
     </div>
 }
+<script>
+    (function() {
+        const MIN = 1;
+        const MAX = @Model.Stock; 
+
+        const input = document.getElementById('quantity-input');
+        const display = document.getElementById('quantity-display');
+        const btnMinus = document.getElementById('btn-minus');
+        const btnPlus = document.getElementById('btn-plus');
+
+        function setQty(value) {
+            value = Math.min(MAX, Math.max(MIN, value));
+            input.value = value;
+            display.textContent = value;
+            btnMinus.disabled = value <= MIN;
+            btnPlus.disabled = value >= MAX;
+        }
+
+        btnMinus.addEventListener('click', () => setQty(parseInt(input.value) - 1));
+        btnPlus.addEventListener('click', () => setQty(parseInt(input.value) + 1));
+
+        setQty(1); 
+    })();
+</script>

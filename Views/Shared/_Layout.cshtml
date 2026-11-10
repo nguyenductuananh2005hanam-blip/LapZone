@@ -313,7 +313,7 @@
                 <div class="d-flex align-items-center gap-2 ms-auto order-2 order-md-3">
 
                     <a class="header-action position-relative"
-                       asp-area="" asp-controller="Cart" asp-action="Index" title="Giỏ hàng">
+                       asp-area="" asp-controller="CartItems" asp-action="Index" title="Giỏ hàng">
                         <i class="bi bi-cart3"></i>
                         <span class="d-none d-lg-inline">Giỏ hàng</span>
                         @if (cartCount > 0)
@@ -345,6 +345,9 @@
                                 <li>
                                     <a class="dropdown-item" asp-area="" asp-controller="Account" asp-action="Profile" asp-route-id="@userId">
                                         <i class="bi bi-person me-2"></i>Thông tin tài khoản
+                                    </a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="Account" asp-action="ChangesPassword" asp-route-id="@userId">
+                                        <i class="bi bi-key me-2"></i>Thay đổi mật khẩu
                                     </a>
                                     <a class="dropdown-item" asp-area="" asp-controller="Account" asp-action="Orders">
                                         <i class="bi bi-list-check me-2"></i>Thông tin đơn hàng
@@ -411,6 +414,12 @@
                                             <i class="bi bi-laptop me-2"></i>Quản lý sản phẩm
                                         </a>
                                     </li>
+                                    <li>
+                                        <a class="dropdown-item" asp-controller="Orders" asp-action="Index">
+                                            <i class="bi bi-receipt me-2"></i>Quản lý đơn hàng
+                                        </a>
+                                    </li>
+
                                     <li><hr class="dropdown-divider" /></li>
                                     <li>
                                         <a class="dropdown-item fw-bold text-primary" asp-controller="AdminThongKe" asp-action="Index">
@@ -446,7 +455,7 @@
                 <div class="col-lg-4 col-md-6">
                     <div class="footer-brand mb-3"><i class="bi bi-laptop me-2"></i>Lapzone</div>
                     <p class="footer-text">
-                        Cửa hàng laptop chính hãng, đa dạng cấu hình, giá tốt cho học tập, văn phòng và giải trí.
+                        Cửa hàng laptop, đa dạng cấu hình, giá tốt cho học tập, văn phòng và giải trí.
                     </p>
                     <div class="footer-social">
                         <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
@@ -462,7 +471,7 @@
                         <li><a asp-controller="Home" asp-action="Index">Trang chủ</a></li>
                         <li><a asp-controller="Home" asp-action="DsDanhMuc">Danh mục sản phẩm</a></li>
                         <li><a asp-controller="Home" asp-action="About">Về chúng tôi</a></li>
-                        <li><a asp-controller="Cart" asp-action="Index">Giỏ hàng</a></li>
+                        <li><a asp-controller="CartItems" asp-action="Index">Giỏ hàng</a></li>
                     </ul>
                 </div>
 
@@ -479,9 +488,9 @@
                 <div class="col-lg-3 col-md-6">
                     <h6 class="footer-title">Liên hệ</h6>
                     <ul class="footer-contact">
-                        <li><i class="bi bi-geo-alt"></i>Số 1, đường ABC, Hà Nội</li>
-                        <li><i class="bi bi-telephone"></i>1900 0000</li>
-                        <li><i class="bi bi-envelope"></i>contact@lapzone.vn</li>
+                        <li><i class="bi bi-geo-alt"></i>Ninh Bình</li>
+                        <li><i class="bi bi-telephone"></i>0383861262</li>
+                        <li><i class="bi bi-envelope"></i>nguyenductuananh@gmail.com</li>
                         <li><i class="bi bi-clock"></i>8:00 - 21:00 (T2 - CN)</li>
                     </ul>
                 </div>
@@ -490,8 +499,8 @@
 
         <div class="footer-bottom">
             <div class="container d-flex flex-wrap justify-content-between gap-2">
-                <span>&copy; @DateTime.Now.Year Lapzone.</span>
-                <span>Thiết kế bởi Lapzone_test</span>
+                <span>&copy; @DateTime.Now.Year</span>
+                @* <span>Thiết kế bởi Lapzone_test</span> *@
             </div>
         </div>
     </footer>

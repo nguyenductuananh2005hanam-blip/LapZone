@@ -83,34 +83,32 @@ public class UsersController : Controller
     // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Edit(int? id, [Bind("Id,FullName,Email,Phone,Password,Address,Role,CartItems,Orders")] User user)
+    public async Task<IActionResult> Edit(int? id, [Bind("Id,FullName,Email,Phone,Password,Address,Role,CartItems,Orders")] User model)
     {
-        if (id != user.Id)
-        {
-            return NotFound();
-        }
+        if (id != model.Id) return NotFound();
 
-        if (ModelState.IsValid)
-        {
-            try
-            {
-                _context.Update(user);
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!UserExists(user.Id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-            return RedirectToAction(nameof(Index));
-        }
-        return View(user);
+        ModelState.Remove("Password");
+        ModelState.Remove("Role");
+        ModelState.Remove("CartItems");
+        ModelState.Remove("Orders");
+        ModelState.Remove("Email");
+
+        if (!ModelState.IsValid) return View(model);
+
+        var user = await _context.Users.FindAsync(id);
+        if (user == null) return NotFound();
+
+        // Chỉ cập nhật những trường được phép sửa
+        user.FullName = model.FullName;
+        user.Phone = model.Phone;
+        user.Address = model.Address;
+
+        await _context.SaveChangesAsync();
+
+        if (HttpContext.Session.GetString("UserId") == user.Id.ToString())
+            HttpContext.Session.SetString("UserName", user.FullName);
+
+        return RedirectToAction("Profile", "Account", new { id = user.Id });
     }
 
     // GET: USERS/Delete/5

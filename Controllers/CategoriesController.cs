@@ -50,6 +50,7 @@ public class CategoriesController : Controller
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Create([Bind("Id,Name,Products")] Category category)
     {
+        ModelState.Remove("Products");
         if (ModelState.IsValid)
         {
             try
@@ -91,6 +92,7 @@ public class CategoriesController : Controller
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Edit(int? id, [Bind("Id,Name,Products")] Category category)
     {
+        ModelState.Remove("Products");
         if (id != category.Id)
         {
             return NotFound();
@@ -128,7 +130,6 @@ public class CategoriesController : Controller
             var danhMuc = await _context.Categories.FindAsync(id);
             if (danhMuc == null) return NotFound();
             ViewBag.Success = "Xóa danh mục thành công.";
-            // Thực hiện xóa luôn hoặc hiện form xác nhận (Ở đây làm nhanh xóa luôn)
             _context.Categories.Remove(danhMuc);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));

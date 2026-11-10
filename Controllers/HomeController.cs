@@ -17,6 +17,7 @@ namespace Lapzone_test.Controllers
         public async Task<IActionResult> Index()
         {
             var products = await _ctx.Products.OrderByDescending(x => x.Id).Take(12).ToListAsync();
+            ViewBag.Categories = await _ctx.Categories.Take(5).ToListAsync();
             return View(products);
         }
         public async Task<IActionResult> About()

@@ -31,6 +31,21 @@
             padding: 2rem 2.25rem;
         }
 
+        .login-card label {
+        display: block;
+        margin-bottom: .4rem;
+        font-size: .9rem;
+        font-weight: 600;
+        color: #475569;
+        }
+
+            .login-card label::before {
+            color: var(--brand);
+            margin-right: .5rem; /* me-2 đặt trên <label> không tạo khoảng cách giữa icon và chữ */
+            font-size: 1.05rem;
+            vertical-align: -2px;
+        }
+
     .login-title {
         font-weight: 700;
         text-align: center;
@@ -68,13 +83,13 @@
                 @Html.ValidationSummary(true, "", new { @class = "text-danger mb-3" })
 
                 <div class="mb-3">
-                    @Html.LabelFor(m => m.Email, "Email", new { @class = "form-label fw-semibold" })
+                    @Html.LabelFor(m => m.Email, "Email", new { @class = "bi bi-envelope form-label fw-semibold" })
                     @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "nguyenvana@gmail.com", type = "email", autofocus = "autofocus" })
                     @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger small" })
                 </div>
 
                 <div class="mb-4">
-                    @Html.LabelFor(m => m.Password, "Mật khẩu", new { @class = "form-label fw-semibold" })
+                    @Html.LabelFor(m => m.Password, "Mật khẩu", new { @class = "bi bi-key form-label fw-semibold" })
                     @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Nhập mật khẩu" })
                     @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger small" })
                 </div>

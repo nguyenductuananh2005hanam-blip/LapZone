@@ -31,6 +31,10 @@ build_property._RazorSourceGeneratorDebug =
 build_property.EffectiveAnalysisLevelStyle = 10.0
 build_property.EnableCodeStyleSeverity = 
 
+[D:/Ki_7/asp.net/Lapzone_test/Views/Account/ChangesPassword.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxDaGFuZ2VzUGFzc3dvcmQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/Ki_7/asp.net/Lapzone_test/Views/Account/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -41,6 +45,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/Ki_7/asp.net/Lapzone_test/Views/Account/Register.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxSZWdpc3Rlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Ki_7/asp.net/Lapzone_test/Views/CartItems/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FydEl0ZW1zXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Ki_7/asp.net/Lapzone_test/Views/Categories/Create.cshtml]
