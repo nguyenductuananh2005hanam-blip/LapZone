@@ -175,5 +175,19 @@ namespace Lapzone_test.Controllers
             ViewBag.Success = "Đổi mật khẩu thành công!";
             return View(user);
         }
+
+        public async Task<IActionResult> OrderDetails(int? id)
+        {
+            if (id == null) return NotFound();
+
+            var order = await _context.Orders
+                .Include(o => o.OrderDetails)
+                    .ThenInclude(od => od.Product)
+                .FirstOrDefaultAsync(o => o.Id == id);
+
+            if (order == null) return NotFound();   // không có đơn, hoặc đơn của người khác
+
+            return View(order);
+        }
     }
 }

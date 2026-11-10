@@ -305,7 +305,7 @@
                 <form class="search-box flex-grow-1 order-3 order-md-2"
                       asp-controller="Home" asp-action="DsSanPham" method="get">
                     <input type="text" name="keyword" class="form-control"
-                           placeholder="Tìm laptop, hãng, cấu hình..." />
+                           placeholder="Tìm laptop ..." />
                     <button type="submit" aria-label="Tìm kiếm"><i class="bi bi-search"></i></button>
                 </form>
 
@@ -349,7 +349,7 @@
                                     <a class="dropdown-item" asp-area="" asp-controller="Account" asp-action="ChangesPassword" asp-route-id="@userId">
                                         <i class="bi bi-key me-2"></i>Thay đổi mật khẩu
                                     </a>
-                                    <a class="dropdown-item" asp-area="" asp-controller="Account" asp-action="Orders">
+                                    <a class="dropdown-item" asp-area="" asp-controller="CartItems" asp-action="OderDetails" asp-route-id="@userId">
                                         <i class="bi bi-list-check me-2"></i>Thông tin đơn hàng
                                     </a>
                                     <a class="dropdown-item" asp-area="" asp-controller="Account" asp-action="Logout">
@@ -509,7 +509,18 @@
     <button id="backToTop" class="back-to-top" type="button" aria-label="Lên đầu trang">
         <i class="bi bi-arrow-up"></i>
     </button>
-
+    @if (TempData["Success"] != null)
+    {
+        <script>alert(@Json.Serialize(TempData["Success"]));</script>
+    }
+    @if (TempData["Error"] != null)
+    {
+        <script>alert(@Json.Serialize(TempData["Error"]));</script>
+    }
+    @if (ViewBag.Error != null)
+    {
+        <script>alert(@Json.Serialize(ViewBag.Error));</script>
+    }
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>

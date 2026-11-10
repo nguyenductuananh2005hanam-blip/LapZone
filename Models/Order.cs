@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
@@ -14,25 +15,31 @@ public partial class Order
     public int Id { get; set; }
 
     [Column("total_amount")]
+    [DisplayName("Tổng số tiền")]
     public double TotalAmount { get; set; }
 
     [Column("status")]
     [StringLength(50)]
+    [DisplayName("Trạng thái")]
     public string Status { get; set; } = null!;
 
     [Column("order_date", TypeName = "datetime")]
+    [DisplayName("Ngày đặt hàng")]
     public DateTime? OrderDate { get; set; }
 
     [Column("customer_name")]
     [StringLength(100)]
+    [DisplayName("Tên khách hàng")]
     public string? CustomerName { get; set; }
 
     [Column("customer_phone")]
     [StringLength(20)]
     [Unicode(false)]
+    [DisplayName("Số điện thoại")]
     public string? CustomerPhone { get; set; }
 
     [Column("address")]
+    [DisplayName("Địa chỉ")]
     public string? Address { get; set; }
 
     [Column("user_id")]

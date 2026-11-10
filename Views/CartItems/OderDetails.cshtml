@@ -1,0 +1,99 @@
+﻿@model IEnumerable<Lapzone_test.Models.Order>
+@{
+    ViewData["Title"] = "Đơn hàng của tôi";
+}
+
+<style>
+    .ol-card {
+        background: #fff;
+        border-radius: 16px;
+        padding: 1.5rem;
+        box-shadow: 0 4px 20px rgba(15, 23, 42, .08);
+    }
+
+    .ol-table th {
+        font-size: .82rem;
+        text-transform: uppercase;
+        letter-spacing: .03em;
+        color: #64748b;
+        font-weight: 700;
+        border-bottom: 2px solid #edf0f5;
+    }
+
+    .ol-table td {
+        padding: .95rem .5rem;
+        border-color: #edf0f5;
+    }
+
+    .ol-code {
+        font-weight: 700;
+        color: var(--brand);
+    }
+
+    .ol-money {
+        font-weight: 700;
+        color: #dc3545;
+        white-space: nowrap;
+    }
+
+    .ol-empty {
+        text-align: center;
+        padding: 3rem 1rem;
+        color: #64748b;
+    }
+
+        .ol-empty i {
+            font-size: 3rem;
+            color: #cbd5e1;
+        }
+</style>
+
+<h2 class="fw-bold mb-4" style="color:var(--ink)">
+    <i class="bi bi-list-check me-2 text-primary"></i>Đơn hàng của tôi
+</h2>
+
+<div class="ol-card">
+    @if (!Model.Any())
+    {
+        <div class="ol-empty">
+            <i class="bi bi-bag-x"></i>
+            <p class="mt-2 mb-3">Bạn chưa có đơn hàng nào.</p>
+            <a asp-controller="Home" asp-action="DsDanhMuc" class="btn btn-primary rounded-pill px-4">
+                Mua sắm ngay
+            </a>
+        </div>
+    }
+    else
+    {
+        <div class="table-responsive">
+            <table class="table ol-table align-middle mb-0">
+                <thead>
+                    <tr>
+                        <th>Mã đơn</th>
+                        <th>Ngày đặt</th>
+                        <th>Người nhận</th>
+                        <th class="text-end">Tổng tiền</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var o in Model)
+                    {
+                        <tr>
+                            <td class="ol-code">#@o.Id</td>
+                            <td>@o.OrderDate</td>
+                            <td>@o.CustomerName</td>
+                            <td class="text-end ol-money">@o.TotalAmount.ToString("N0") đ</td>
+                            <td class="text-end">
+                                <a asp-controller="Account" asp-action="OrderDetails" asp-route-id="@o.Id"
+                                   class="btn btn-sm btn-outline-primary rounded-pill">
+                                    <i class="bi bi-eye me-1"></i>Xem chi tiết
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+</div>

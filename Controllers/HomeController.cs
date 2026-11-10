@@ -14,6 +14,7 @@ namespace Lapzone_test.Controllers
         {
             _ctx = ctx;
         }
+
         public async Task<IActionResult> Index()
         {
             var products = await _ctx.Products.OrderByDescending(x => x.Id).Take(12).ToListAsync();

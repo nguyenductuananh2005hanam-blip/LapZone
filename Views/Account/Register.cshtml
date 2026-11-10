@@ -4,18 +4,7 @@
     ViewData["Title"] = "Đăng ký tài khoản";
 }
 
-@if (ViewBag.Error != null)
-{
-    <script>
-        alert(@Json.Serialize(ViewBag.Error));
-    </script>
-}
-else if (ViewBag.Success != null)
-{
-    <script>
-        alert(@Json.Serialize(ViewBag.Success));
-    </script>
-}
+
 
 <style>
     .auth-wrapper {

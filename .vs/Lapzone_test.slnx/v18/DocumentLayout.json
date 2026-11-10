@@ -1,0 +1,363 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Ki_7\\asp.net\\Lapzone_test\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{E43E0432-4647-6D2D-1995-BA7E1803CAD2}|Lapzone_test.csproj|d:\\ki_7\\asp.net\\lapzone_test\\controllers\\adminthongkecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E43E0432-4647-6D2D-1995-BA7E1803CAD2}|Lapzone_test.csproj|solutionrelative:controllers\\adminthongkecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E43E0432-4647-6D2D-1995-BA7E1803CAD2}|Lapzone_test.csproj|d:\\ki_7\\asp.net\\lapzone_test\\models\\thongkeviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E43E0432-4647-6D2D-1995-BA7E1803CAD2}|Lapzone_test.csproj|solutionrelative:models\\thongkeviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E43E0432-4647-6D2D-1995-BA7E1803CAD2}|Lapzone_test.csproj|d:\\ki_7\\asp.net\\lapzone_test\\views\\products\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E43E0432-4647-6D2D-1995-BA7E1803CAD2}|Lapzone_test.csproj|solutionrelative:views\\products\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E43E0432-4647-6D2D-1995-BA7E1803CAD2}|Lapzone_test.csproj|d:\\ki_7\\asp.net\\lapzone_test\\controllers\\productscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E43E0432-4647-6D2D-1995-BA7E1803CAD2}|Lapzone_test.csproj|solutionrelative:controllers\\productscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E43E0432-4647-6D2D-1995-BA7E1803CAD2}|Lapzone_test.csproj|d:\\ki_7\\asp.net\\lapzone_test\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E43E0432-4647-6D2D-1995-BA7E1803CAD2}|Lapzone_test.csproj|solutionrelative:views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E43E0432-4647-6D2D-1995-BA7E1803CAD2}|Lapzone_test.csproj|d:\\ki_7\\asp.net\\lapzone_test\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E43E0432-4647-6D2D-1995-BA7E1803CAD2}|Lapzone_test.csproj|solutionrelative:controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E43E0432-4647-6D2D-1995-BA7E1803CAD2}|Lapzone_test.csproj|d:\\ki_7\\asp.net\\lapzone_test\\views\\cartitems\\oderdetails.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E43E0432-4647-6D2D-1995-BA7E1803CAD2}|Lapzone_test.csproj|solutionrelative:views\\cartitems\\oderdetails.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E43E0432-4647-6D2D-1995-BA7E1803CAD2}|Lapzone_test.csproj|d:\\ki_7\\asp.net\\lapzone_test\\views\\account\\orderdetails.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E43E0432-4647-6D2D-1995-BA7E1803CAD2}|Lapzone_test.csproj|solutionrelative:views\\account\\orderdetails.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E43E0432-4647-6D2D-1995-BA7E1803CAD2}|Lapzone_test.csproj|d:\\ki_7\\asp.net\\lapzone_test\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E43E0432-4647-6D2D-1995-BA7E1803CAD2}|Lapzone_test.csproj|solutionrelative:controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E43E0432-4647-6D2D-1995-BA7E1803CAD2}|Lapzone_test.csproj|d:\\ki_7\\asp.net\\lapzone_test\\views\\products\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E43E0432-4647-6D2D-1995-BA7E1803CAD2}|Lapzone_test.csproj|solutionrelative:views\\products\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E43E0432-4647-6D2D-1995-BA7E1803CAD2}|Lapzone_test.csproj|d:\\ki_7\\asp.net\\lapzone_test\\controllers\\cartitemscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E43E0432-4647-6D2D-1995-BA7E1803CAD2}|Lapzone_test.csproj|solutionrelative:controllers\\cartitemscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E43E0432-4647-6D2D-1995-BA7E1803CAD2}|Lapzone_test.csproj|d:\\ki_7\\asp.net\\lapzone_test\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E43E0432-4647-6D2D-1995-BA7E1803CAD2}|Lapzone_test.csproj|solutionrelative:views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E43E0432-4647-6D2D-1995-BA7E1803CAD2}|Lapzone_test.csproj|d:\\ki_7\\asp.net\\lapzone_test\\models\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E43E0432-4647-6D2D-1995-BA7E1803CAD2}|Lapzone_test.csproj|solutionrelative:models\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E43E0432-4647-6D2D-1995-BA7E1803CAD2}|Lapzone_test.csproj|d:\\ki_7\\asp.net\\lapzone_test\\views\\account\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E43E0432-4647-6D2D-1995-BA7E1803CAD2}|Lapzone_test.csproj|solutionrelative:views\\account\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E43E0432-4647-6D2D-1995-BA7E1803CAD2}|Lapzone_test.csproj|d:\\ki_7\\asp.net\\lapzone_test\\views\\cartitems\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E43E0432-4647-6D2D-1995-BA7E1803CAD2}|Lapzone_test.csproj|solutionrelative:views\\cartitems\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E43E0432-4647-6D2D-1995-BA7E1803CAD2}|Lapzone_test.csproj|d:\\ki_7\\asp.net\\lapzone_test\\views\\cartitems\\checkout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E43E0432-4647-6D2D-1995-BA7E1803CAD2}|Lapzone_test.csproj|solutionrelative:views\\cartitems\\checkout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E43E0432-4647-6D2D-1995-BA7E1803CAD2}|Lapzone_test.csproj|d:\\ki_7\\asp.net\\lapzone_test\\models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E43E0432-4647-6D2D-1995-BA7E1803CAD2}|Lapzone_test.csproj|solutionrelative:models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E43E0432-4647-6D2D-1995-BA7E1803CAD2}|Lapzone_test.csproj|d:\\ki_7\\asp.net\\lapzone_test\\readme.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}",
+      "RelativeMoniker": "D:0:0:{E43E0432-4647-6D2D-1995-BA7E1803CAD2}|Lapzone_test.csproj|solutionrelative:readme.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E43E0432-4647-6D2D-1995-BA7E1803CAD2}|Lapzone_test.csproj|d:\\ki_7\\asp.net\\lapzone_test\\data\\lapdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E43E0432-4647-6D2D-1995-BA7E1803CAD2}|Lapzone_test.csproj|solutionrelative:data\\lapdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 6,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:1:0:{e8b06f53-6d01-11d2-aa7d-00c04f990343}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:130:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ThongKeViewModel.cs",
+              "DocumentMoniker": "D:\\Ki_7\\asp.net\\Lapzone_test\\Models\\ThongKeViewModel.cs",
+              "RelativeDocumentMoniker": "Models\\ThongKeViewModel.cs",
+              "ToolTip": "D:\\Ki_7\\asp.net\\Lapzone_test\\Models\\ThongKeViewModel.cs",
+              "RelativeToolTip": "Models\\ThongKeViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-10T17:01:43.119Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AdminThongKeController.cs",
+              "DocumentMoniker": "D:\\Ki_7\\asp.net\\Lapzone_test\\Controllers\\AdminThongKeController.cs",
+              "RelativeDocumentMoniker": "Controllers\\AdminThongKeController.cs",
+              "ToolTip": "D:\\Ki_7\\asp.net\\Lapzone_test\\Controllers\\AdminThongKeController.cs",
+              "RelativeToolTip": "Controllers\\AdminThongKeController.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAkAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-10T16:56:24.05Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Details.cshtml",
+              "DocumentMoniker": "D:\\Ki_7\\asp.net\\Lapzone_test\\Views\\Products\\Details.cshtml",
+              "RelativeDocumentMoniker": "Views\\Products\\Details.cshtml",
+              "ToolTip": "D:\\Ki_7\\asp.net\\Lapzone_test\\Views\\Products\\Details.cshtml",
+              "RelativeToolTip": "Views\\Products\\Details.cshtml",
+              "ViewState": "AgIAAKYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-11-10T16:52:25.267Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Edit.cshtml",
+              "DocumentMoniker": "D:\\Ki_7\\asp.net\\Lapzone_test\\Views\\Products\\Edit.cshtml",
+              "RelativeDocumentMoniker": "Views\\Products\\Edit.cshtml",
+              "ToolTip": "D:\\Ki_7\\asp.net\\Lapzone_test\\Views\\Products\\Edit.cshtml",
+              "RelativeToolTip": "Views\\Products\\Edit.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-11-10T16:44:51.371Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ProductsController.cs",
+              "DocumentMoniker": "D:\\Ki_7\\asp.net\\Lapzone_test\\Controllers\\ProductsController.cs",
+              "RelativeDocumentMoniker": "Controllers\\ProductsController.cs",
+              "ToolTip": "D:\\Ki_7\\asp.net\\Lapzone_test\\Controllers\\ProductsController.cs",
+              "RelativeToolTip": "Controllers\\ProductsController.cs",
+              "ViewState": "AgIAABMAAAAAAAAAAAAuwB0AAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-10T16:43:23.62Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "OrderDetails.cshtml",
+              "DocumentMoniker": "D:\\Ki_7\\asp.net\\Lapzone_test\\Views\\Account\\OrderDetails.cshtml",
+              "RelativeDocumentMoniker": "Views\\Account\\OrderDetails.cshtml",
+              "ToolTip": "D:\\Ki_7\\asp.net\\Lapzone_test\\Views\\Account\\OrderDetails.cshtml",
+              "RelativeToolTip": "Views\\Account\\OrderDetails.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFgAAABKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-11-10T16:32:43.904Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "OderDetails.cshtml",
+              "DocumentMoniker": "D:\\Ki_7\\asp.net\\Lapzone_test\\Views\\CartItems\\OderDetails.cshtml",
+              "RelativeDocumentMoniker": "Views\\CartItems\\OderDetails.cshtml",
+              "ToolTip": "D:\\Ki_7\\asp.net\\Lapzone_test\\Views\\CartItems\\OderDetails.cshtml",
+              "RelativeToolTip": "Views\\CartItems\\OderDetails.cshtml",
+              "ViewState": "AgIAACcAAAAAAAAAAAAAAFcAAABUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-11-10T15:54:34.874Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "Login.cshtml",
+              "DocumentMoniker": "D:\\Ki_7\\asp.net\\Lapzone_test\\Views\\Account\\Login.cshtml",
+              "RelativeDocumentMoniker": "Views\\Account\\Login.cshtml",
+              "ToolTip": "D:\\Ki_7\\asp.net\\Lapzone_test\\Views\\Account\\Login.cshtml",
+              "RelativeToolTip": "Views\\Account\\Login.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-11-10T15:51:46.702Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\Ki_7\\asp.net\\Lapzone_test\\Views\\CartItems\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\CartItems\\Index.cshtml",
+              "ToolTip": "D:\\Ki_7\\asp.net\\Lapzone_test\\Views\\CartItems\\Index.cshtml",
+              "RelativeToolTip": "Views\\CartItems\\Index.cshtml",
+              "ViewState": "AgIAADMAAAAAAAAAAAAAAEEAAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-11-10T14:52:09.606Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "Checkout.cshtml",
+              "DocumentMoniker": "D:\\Ki_7\\asp.net\\Lapzone_test\\Views\\CartItems\\Checkout.cshtml",
+              "RelativeDocumentMoniker": "Views\\CartItems\\Checkout.cshtml",
+              "ToolTip": "D:\\Ki_7\\asp.net\\Lapzone_test\\Views\\CartItems\\Checkout.cshtml",
+              "RelativeToolTip": "Views\\CartItems\\Checkout.cshtml",
+              "ViewState": "AgIAAHoAAAAAAAAAAAAAAMkAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-11-10T14:47:53.783Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "CartItemsController.cs",
+              "DocumentMoniker": "D:\\Ki_7\\asp.net\\Lapzone_test\\Controllers\\CartItemsController.cs",
+              "RelativeDocumentMoniker": "Controllers\\CartItemsController.cs",
+              "ToolTip": "D:\\Ki_7\\asp.net\\Lapzone_test\\Controllers\\CartItemsController.cs",
+              "RelativeToolTip": "Controllers\\CartItemsController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-10T14:37:51.681Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "README.md",
+              "DocumentMoniker": "D:\\Ki_7\\asp.net\\Lapzone_test\\README.md",
+              "RelativeDocumentMoniker": "README.md",
+              "ToolTip": "D:\\Ki_7\\asp.net\\Lapzone_test\\README.md",
+              "RelativeToolTip": "README.md",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2026-11-10T14:00:40.392Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "D:\\Ki_7\\asp.net\\Lapzone_test\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "D:\\Ki_7\\asp.net\\Lapzone_test\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAAFEBAAAAAAAAAAAAAGEBAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-11-10T07:02:47.746Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Order.cs",
+              "DocumentMoniker": "D:\\Ki_7\\asp.net\\Lapzone_test\\Models\\Order.cs",
+              "RelativeDocumentMoniker": "Models\\Order.cs",
+              "ToolTip": "D:\\Ki_7\\asp.net\\Lapzone_test\\Models\\Order.cs",
+              "RelativeToolTip": "Models\\Order.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAA1wBsAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-10T15:57:11.105Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "D:\\Ki_7\\asp.net\\Lapzone_test\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "Controllers\\HomeController.cs",
+              "ToolTip": "D:\\Ki_7\\asp.net\\Lapzone_test\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "Controllers\\HomeController.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAA1wBEAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-10T06:56:26.326Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\Ki_7\\asp.net\\Lapzone_test\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\Home\\Index.cshtml",
+              "ToolTip": "D:\\Ki_7\\asp.net\\Lapzone_test\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "Views\\Home\\Index.cshtml",
+              "ViewState": "AgIAAKoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-11-10T07:03:31.603Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "AccountController.cs",
+              "DocumentMoniker": "D:\\Ki_7\\asp.net\\Lapzone_test\\Controllers\\AccountController.cs",
+              "RelativeDocumentMoniker": "Controllers\\AccountController.cs",
+              "ToolTip": "D:\\Ki_7\\asp.net\\Lapzone_test\\Controllers\\AccountController.cs",
+              "RelativeToolTip": "Controllers\\AccountController.cs",
+              "ViewState": "AgIAAK8AAAAAAAAAAAAAALIAAAA1AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-10T14:50:03.96Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "Product.cs",
+              "DocumentMoniker": "D:\\Ki_7\\asp.net\\Lapzone_test\\Models\\Product.cs",
+              "RelativeDocumentMoniker": "Models\\Product.cs",
+              "ToolTip": "D:\\Ki_7\\asp.net\\Lapzone_test\\Models\\Product.cs",
+              "RelativeToolTip": "Models\\Product.cs",
+              "ViewState": "AgIAABMAAAAAAAAAAAAQwCMAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-10T15:33:49.439Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "LapDbContext.cs",
+              "DocumentMoniker": "D:\\Ki_7\\asp.net\\Lapzone_test\\Data\\LapDbContext.cs",
+              "RelativeDocumentMoniker": "Data\\LapDbContext.cs",
+              "ToolTip": "D:\\Ki_7\\asp.net\\Lapzone_test\\Data\\LapDbContext.cs",
+              "RelativeToolTip": "Data\\LapDbContext.cs",
+              "ViewState": "AgIAAFoAAAAAAAAAAAAIwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-10T13:53:01.616Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
