@@ -16,6 +16,11 @@ public class CategoriesController : Controller
     // GET: CATEGORYS
     public async Task<IActionResult> Index()    
     {
+        var adminrole = HttpContext.Session.GetString("UserRole");
+        if (adminrole != "Admin")
+        {
+            return RedirectToAction("Login", "Account");
+        }
         return View(await _context.Categories.OrderBy(c => c.Id).ToListAsync());
     }
 

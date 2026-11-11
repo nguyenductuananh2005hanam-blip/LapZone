@@ -152,7 +152,7 @@ public class CartItemsController : Controller
         order.CustomerName = name;
         order.CustomerPhone = phone;
         order.Address = address;
-        order.Status = "Đang xử lý";
+        order.Status = "Chờ xác nhận";
 
         order.UserId = userId;
         order.OrderDate = DateTime.Now;

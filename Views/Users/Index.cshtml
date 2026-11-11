@@ -3,6 +3,8 @@
 @{
     ViewData["Title"] = "Quản lý tài khoản";
     var roles = new[] { "Admin", "User" };
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+
 }
 <style>
     th{
@@ -24,6 +26,9 @@
     <thead>
         <tr>
             <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.FullName)
             </th>
             <th>
@@ -44,6 +49,9 @@
     <tbody>
 @foreach (var item in Model) {
         <tr>
+            <td>
+                #@Html.DisplayFor(model => item.Id)
+            </td>
             <td>
                 @Html.DisplayFor(model => item.FullName)
             </td>
@@ -71,8 +79,6 @@
             @* <td>@(item.CartItems?.Count ?? 0)</td> *@
             @* <td>@(item.Orders?.Count ?? 0)</td> *@
             <td>
-                @* <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-secondary">Sửa</a> | *@
-                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info">Chi tiết</a> |
                 <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa người dùng này?')">Xóa</a>
             </td>
         </tr>

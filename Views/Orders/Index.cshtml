@@ -1,25 +1,37 @@
 @model IEnumerable<Lapzone_test.Models.Order>
-
+<style>
+    th{
+        text-align: center;
+    }
+    td{
+        vertical-align: middle !important;
+        text-align : center;
+    }
+</style>
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Quản lý đơn hàng";
+    var statusOptions = new List<SelectListItem>
+    {
+        new SelectListItem { Value = "Chờ xác nhận", Text = "Chờ xác nhận" },
+        new SelectListItem { Value = "Đang giao hàng", Text = "Đang giao hàng" },
+        new SelectListItem { Value = "Đã giao hàng", Text = "Đã giao hàng" },
+    };
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+@if (TempData["SuccessMessage"] != null)
+{
+    <script>
+        alert(@Json.Serialize(TempData["SuccessMessage"]));
+    </script>
 }
 
-<h1>Index</h1>
+<h2>Quản lý đơn hàng</h2>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.TotalAmount)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Status)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.OrderDate)
+                @Html.DisplayNameFor(model => model.Id)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.CustomerName)
@@ -31,29 +43,22 @@
                 @Html.DisplayNameFor(model => model.Address)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.UserId)
+                @Html.DisplayNameFor(model => model.OrderDate)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.OrderDetails)
+                @Html.DisplayNameFor(model => model.TotalAmount)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.User)
+                @Html.DisplayNameFor(model => model.Status)
             </th>
-            <th></th>
         </tr>
     </thead>
     <tbody>
 @foreach (var item in Model) {
         <tr>
-            <td>
-                @Html.DisplayFor(model => item.TotalAmount)
-            </td>
-            <td>
-                @Html.DisplayFor(model => item.Status)
-            </td>
-            <td>
-                @Html.DisplayFor(model => item.OrderDate)
-            </td>
+             <td>
+               #@Html.DisplayFor(model => item.Id)
+             </td>
             <td>
                 @Html.DisplayFor(model => item.CustomerName)
             </td>
@@ -64,18 +69,34 @@
                 @Html.DisplayFor(model => item.Address)
             </td>
             <td>
-                @Html.DisplayFor(model => item.UserId)
+               @Html.DisplayFor(model => item.OrderDate)
             </td>
             <td>
-                @Html.DisplayFor(model => item.OrderDetails)
+               @Html.DisplayFor(model => item.TotalAmount)
             </td>
             <td>
-                @Html.DisplayFor(model => item.User)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                        <form method="post" asp-controller="Orders" asp-action="UpdateOrderStatus">
+                            <input type="hidden" name="id" value="@item.Id" />
+
+                        @if (item.Status == "Đã giao hàng")
+                            {
+                                <select name="status" class="form-select form-select-sm" onchange="this.form.submit()" disabled>
+                                    @foreach (var opt in statusOptions)
+                                    {
+                                        <option value="@opt.Value" selected="@(item.Status == opt.Value)">@opt.Text</option>
+                                    }
+                                </select>
+                            }
+                            else
+                            {
+                                <select name="status" class="form-select form-select-sm" onchange="this.form.submit()">
+                                    @foreach (var opt in statusOptions)
+                                    {
+                                        <option value="@opt.Value" selected="@(item.Status == opt.Value)">@opt.Text</option>
+                                    }
+                                </select>
+                            }
+                        </form>
             </td>
         </tr>
 }

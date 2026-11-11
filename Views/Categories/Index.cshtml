@@ -3,6 +3,7 @@
 @{
     ViewData["Title"] = "Quản lý danh mục";
     // Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 @if (ViewBag.ErrorMessage != null)
 {
@@ -56,7 +57,7 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(model => item.Id)
+                #@Html.DisplayFor(model => item.Id)
             </td>
             <td>
                 @Html.DisplayFor(model => item.Name)

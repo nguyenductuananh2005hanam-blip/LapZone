@@ -1,0 +1,160 @@
+﻿@{
+    var ctrl = ViewContext.RouteData.Values["controller"]?.ToString() ?? "";
+    string Active(string c) => string.Equals(ctrl, c, StringComparison.OrdinalIgnoreCase) ? "active" : "";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    var today = DateTime.Now.ToString("dddd, dd/MM/yyyy", new System.Globalization.CultureInfo("vi-VN"));
+    int pending = (int?)ViewBag.PendingOrders ?? 0;
+    var tiles = new[]
+   {
+        new { Name = "Sản phẩm",   Ctrl = "Products",   Icon = "fa-laptop",        Tone = "primary", Count = (int?)ViewBag.ProductCount ?? 0,  Hint = "Quản lý kho và giá bán",        Attn = false },
+        new { Name = "Đơn hàng",   Ctrl = "Orders",     Icon = "fa-boxes-stacked", Tone = "warning", Count = (int?)ViewBag.OrderCount ?? 0,    Hint = pending > 0 ? $"{pending} đơn chờ xác nhận" : "Không có đơn chờ xác nhận", Attn = pending > 0 },
+        new { Name = "Khách hàng", Ctrl = "Users",      Icon = "fa-users",         Tone = "success", Count = (int?)ViewBag.UserCount ?? 0,     Hint = "Quản lý tài khoản người dùng", Attn = false },
+        new { Name = "Danh mục",   Ctrl = "Categories", Icon = "fa-tags",          Tone = "info",    Count = (int?)ViewBag.CategoryCount ?? 0, Hint = "Các hãng laptop đang bán",     Attn = false }
+    };
+    ViewData["Title"] = "Tổng quan";
+
+}
+<style>
+    /* Trang tổng quan */
+    .dash-hero {
+        padding: 24px 28px;
+        margin-bottom: 24px;
+        border-left: 5px solid #1abc9c
+    }
+
+        .dash-hero h1 {
+            margin: 0 0 4px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #2c3e50
+        }
+
+        .dash-hero p {
+            margin: 0;
+            color: #6c757d
+        }
+
+    .dash-tiles {
+        display: grid;
+        grid-template-columns: repeat(auto-fit,minmax(230px,1fr));
+        gap: 20px;
+        margin-bottom: 24px
+    }
+
+    .dash-tile {
+        --tone: #0d6efd;
+        display: grid;
+        grid-template-columns: auto 1fr;
+        align-items: center;
+        gap: 4px 16px;
+        padding: 20px;
+        background: #fff;
+        border-radius: 6px;
+        border-top: 4px solid var(--tone);
+        box-shadow: 0 2px 10px rgba(0,0,0,.08);
+        color: inherit;
+        text-decoration: none;
+        transition: box-shadow .15s
+    }
+
+        .dash-tile:hover {
+            box-shadow: 0 6px 18px rgba(0,0,0,.14);
+            color: inherit
+        }
+
+    .dash-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 52px;
+        height: 52px;
+        border-radius: 50%;
+        background: color-mix(in srgb, var(--tone) 14%, #fff);
+        color: var(--tone);
+        font-size: 1.3rem
+    }
+
+    .dash-num {
+        display: block;
+        font-size: 1.9rem;
+        font-weight: 700;
+        line-height: 1.1;
+        color: #2c3e50
+    }
+
+    .dash-name {
+        display: block;
+        font-weight: 500;
+        color: #6c757d
+    }
+
+    .dash-hint {
+        grid-column: 1 / -1;
+        margin-top: 8px;
+        padding-top: 10px;
+        border-top: 1px solid #eef0f2;
+        font-size: .875rem;
+        color: #6c757d
+    }
+
+    .dash-tile.attn .dash-hint {
+        color: #d35400;
+        font-weight: 600
+    }
+
+    .tone-primary {
+        --tone: #0d6efd
+    }
+
+    .tone-warning {
+        --tone: #f39c12
+    }
+
+    .tone-success {
+        --tone: #27ae60
+    }
+
+    .tone-info {
+        --tone: #17a2b8
+    }
+
+    .dash-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px
+    }
+
+    .admin-card + .admin-card {
+        margin-top: 24px
+    }
+</style>
+<div class="admin-card dash-hero">
+    <h1>Xin chào, @(User.Identity?.Name ?? "Quản trị viên")</h1>
+    <p>Hôm nay là @today. Chọn một mục bên dưới hoặc ở menu bên trái để bắt đầu.</p>
+</div>
+
+<div class="dash-tiles">
+    @foreach (var t in tiles)
+    {
+        <a class="dash-tile tone-@t.Tone @(t.Attn ? "attn" : "")" asp-controller="@t.Ctrl" asp-action="Index">
+            <span class="dash-icon"><i class="fa-solid @t.Icon"></i></span>
+            <span>
+                <span class="dash-num">@t.Count.ToString("N0")</span>
+                <span class="dash-name">@t.Name</span>
+            </span>
+            <span class="dash-hint">@t.Hint</span>
+        </a>
+    }
+</div>
+
+<div class="admin-card">
+    <div class="admin-card-head">
+        <h1><i class="fa-solid fa-bolt"></i> Thao tác nhanh</h1>
+    </div>
+    <div class="admin-card-body dash-actions">
+        <a class="btn btn-primary" asp-controller="Products" asp-action="Create"><i class="fa-solid fa-plus me-2"></i>Thêm sản phẩm</a>
+        <a class="btn btn-outline-primary" asp-controller="Categories" asp-action="Create"><i class="fa-solid fa-plus me-2"></i>Thêm danh mục</a>
+        <a class="btn btn-outline-secondary" asp-controller="Orders" asp-action="Index"><i class="fa-solid fa-boxes-stacked me-2"></i>Xử lý đơn hàng</a>
+    </div>
+</div>
+

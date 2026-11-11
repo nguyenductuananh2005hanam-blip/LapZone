@@ -1,8 +1,9 @@
 
+using Lapzone_test.Data;
+using Lapzone_test.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Lapzone_test.Models;
-using Lapzone_test.Data;
+using Microsoft.Identity.Client.NativeInterop;
 
 public class UsersController : Controller
 {
@@ -16,6 +17,11 @@ public class UsersController : Controller
     // GET: USERS
     public async Task<IActionResult> Index()    
     {
+        var adminrole = HttpContext.Session.GetString("UserRole");
+        if(adminrole != "Admin")
+        {
+            return RedirectToAction("Login", "Account");
+        } else
         return View(await _context.Users.ToListAsync());
     }
 

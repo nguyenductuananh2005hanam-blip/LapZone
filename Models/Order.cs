@@ -12,6 +12,7 @@ public partial class Order
 {
     [Key]
     [Column("id")]
+    [DisplayName("Mã đơn hàng")]
     public int Id { get; set; }
 
     [Column("total_amount")]

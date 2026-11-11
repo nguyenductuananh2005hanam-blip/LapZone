@@ -2,6 +2,8 @@
 
 @{
     ViewData["Title"] = "Quản lý sản phẩm";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+
 }
 @if (ViewBag.ErrorMessage != null)
 {
@@ -63,7 +65,7 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Id)
+                #@Html.DisplayFor(modelItem => item.Id)
             </td>
             <td>
                 @Html.DisplayFor(model => item.Name)

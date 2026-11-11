@@ -58,7 +58,25 @@ public class OrdersController : Controller
         }
         return View(order);
     }
-
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> UpdateOrderStatus(int? id, string status)
+    {
+        if (id == null)
+        {
+            return NotFound();
+        }
+        var order = await _context.Orders.FindAsync(id);
+        if (order == null)
+        {
+            return NotFound();
+        }
+        order.Status = status;
+        _context.Update(order);
+        TempData["SuccessMessage"] = "Cập nhật trạng thái đơn hàng thành công!";
+        await _context.SaveChangesAsync();
+        return RedirectToAction(nameof(Index));
+    }
     // GET: ORDERS/Edit/5
     public async Task<IActionResult> Edit(int? id)
     {
@@ -89,6 +107,7 @@ public class OrdersController : Controller
 
         if (ModelState.IsValid)
         {
+            
             try
             {
                 _context.Update(order);
@@ -142,9 +161,10 @@ public class OrdersController : Controller
         await _context.SaveChangesAsync();
         return RedirectToAction(nameof(Index));
     }
-
+    
     private bool OrderExists(int? id)
     {
         return _context.Orders.Any(e => e.Id == id);
     }
+    
 }

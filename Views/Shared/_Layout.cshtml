@@ -388,45 +388,17 @@
                                 <i class="bi bi-info-circle me-1"></i>Về chúng tôi
                             </a>
                         </li>
+                        
+                        
                     </ul>
 
                     @if (isAdmin)
                     {
                         <ul class="navbar-nav ms-lg-auto">
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle text-primary fw-bold" href="#" id="adminDropdown"
-                                   role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <li class="nav-item ">
+                                <a class="nav-link text-primary fw-bold @Active("Admin", "Index")" asp-action="Index" asp-controller="Admin" role="button">
                                     <i class="bi bi-gear-fill me-1"></i>Quản trị
                                 </a>
-                                <ul class="dropdown-menu dropdown-menu-end border-0 shadow rounded-3" aria-labelledby="adminDropdown">
-                                    <li>
-                                        <a class="dropdown-item" asp-controller="Categories" asp-action="Index">
-                                            <i class="bi bi-tags me-2"></i>Quản lý danh mục
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" asp-controller="Users" asp-action="Index">
-                                            <i class="bi bi-people me-2"></i>Quản lý tài khoản
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" asp-controller="Products" asp-action="Index">
-                                            <i class="bi bi-laptop me-2"></i>Quản lý sản phẩm
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" asp-controller="Orders" asp-action="Index">
-                                            <i class="bi bi-receipt me-2"></i>Quản lý đơn hàng
-                                        </a>
-                                    </li>
-
-                                    <li><hr class="dropdown-divider" /></li>
-                                    <li>
-                                        <a class="dropdown-item fw-bold text-primary" asp-controller="AdminThongKe" asp-action="Index">
-                                            <i class="bi bi-graph-up-arrow me-2"></i>Thống kê doanh thu
-                                        </a>
-                                    </li>
-                                </ul>
                             </li>
                         </ul>
                     }
