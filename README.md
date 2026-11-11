@@ -89,8 +89,11 @@ Lapzone_test/
 ├── Controllers/            # Xử lý request, điều hướng và trả về View
 │   ├── HomeController.cs
 │   └── ...
-├── Models/                 # Entity và DbContext (sinh bằng lệnh Scaffold)
+├── Data/                 # Entity và DbContext (sinh bằng lệnh Scaffold)
 │   ├── LapDbContext.cs
+│   └── ... 
+├── Models/                 # Entity và DbContext (sinh bằng lệnh Scaffold)
+│   ├── User.cs
 │   └── ...           
 ├── Views/                  # Giao diện Razor (.cshtml)
 │   ├── Home/
